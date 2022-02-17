@@ -24,6 +24,7 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "abilities": MessageLookupByLibrary.simpleMessage("Abilities"),
         "about": MessageLookupByLibrary.simpleMessage("About"),
+        "accuracy": MessageLookupByLibrary.simpleMessage("Accuracy"),
         "alain": MessageLookupByLibrary.simpleMessage("Alain Cruz Jiménez"),
         "appName": MessageLookupByLibrary.simpleMessage("PokeDex"),
         "appWithPokeApiHelp": MessageLookupByLibrary.simpleMessage(
@@ -32,6 +33,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "category": MessageLookupByLibrary.simpleMessage("Category"),
         "contestCategories":
             MessageLookupByLibrary.simpleMessage("Contest Categories"),
+        "damage_class": MessageLookupByLibrary.simpleMessage("Damage Class"),
+        "effect_chance": MessageLookupByLibrary.simpleMessage("Effect Chance"),
+        "effect_entries":
+            MessageLookupByLibrary.simpleMessage("Effect Entries"),
         "effects": MessageLookupByLibrary.simpleMessage("Effects"),
         "effects_short": MessageLookupByLibrary.simpleMessage("Effect (Short)"),
         "encounterMethods":
@@ -47,20 +52,29 @@ class MessageLookup extends MessageLookupByLibrary {
         "items": MessageLookupByLibrary.simpleMessage("Items"),
         "jose": MessageLookupByLibrary.simpleMessage(
             "José Javier Quesada Madrigal"),
+        "learned_by_pokemon":
+            MessageLookupByLibrary.simpleMessage("Learned by Pokemon"),
         "locations": MessageLookupByLibrary.simpleMessage("Locations"),
-        "machines": MessageLookupByLibrary.simpleMessage("Machines (MTs)"),
-        "moves": MessageLookupByLibrary.simpleMessage("Moves (MOs)"),
+        "machines": MessageLookupByLibrary.simpleMessage("Machines"),
+        "machines_mts": MessageLookupByLibrary.simpleMessage("Machines (MTs)"),
+        "moves": MessageLookupByLibrary.simpleMessage("Moves"),
+        "moves_mos": MessageLookupByLibrary.simpleMessage("Moves (MOs)"),
         "name": MessageLookupByLibrary.simpleMessage("Name"),
         "no": MessageLookupByLibrary.simpleMessage("No"),
         "pokedexes": MessageLookupByLibrary.simpleMessage("Pokedexes"),
         "pokemons": MessageLookupByLibrary.simpleMessage("Pokémons"),
         "pokesAmount": MessageLookupByLibrary.simpleMessage("Pokémon amount"),
+        "power": MessageLookupByLibrary.simpleMessage("Power"),
+        "pp": MessageLookupByLibrary.simpleMessage("Power Points"),
+        "priority": MessageLookupByLibrary.simpleMessage("Priority"),
         "search": MessageLookupByLibrary.simpleMessage("Search"),
         "sections": MessageLookupByLibrary.simpleMessage("Sections"),
         "selectALanguage":
             MessageLookupByLibrary.simpleMessage("Select a language"),
         "settings": MessageLookupByLibrary.simpleMessage("Settings"),
+        "target": MessageLookupByLibrary.simpleMessage("Target"),
         "theme": MessageLookupByLibrary.simpleMessage("Theme"),
+        "type": MessageLookupByLibrary.simpleMessage("Type"),
         "versions": MessageLookupByLibrary.simpleMessage("Versions"),
         "yes": MessageLookupByLibrary.simpleMessage("Yes")
       };

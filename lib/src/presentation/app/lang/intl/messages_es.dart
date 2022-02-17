@@ -24,12 +24,17 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "abilities": MessageLookupByLibrary.simpleMessage("Habilidades"),
         "about": MessageLookupByLibrary.simpleMessage("Acerca de"),
+        "accuracy": MessageLookupByLibrary.simpleMessage("Precisión"),
         "alain": MessageLookupByLibrary.simpleMessage("Alain Cruz Jiménez"),
         "appName": MessageLookupByLibrary.simpleMessage("PokéDex"),
         "appWithPokeApiHelp": MessageLookupByLibrary.simpleMessage(
             "Esta aplicación fue hecha gracias a PokeApi"),
         "berries": MessageLookupByLibrary.simpleMessage("Bayas"),
         "category": MessageLookupByLibrary.simpleMessage("Categoría"),
+        "damage_class": MessageLookupByLibrary.simpleMessage("Tipo de daño"),
+        "effect_chance":
+            MessageLookupByLibrary.simpleMessage("Probabilidad de Efecto"),
+        "effect_entries": MessageLookupByLibrary.simpleMessage("Efectos"),
         "effects": MessageLookupByLibrary.simpleMessage("Efectos"),
         "effects_short":
             MessageLookupByLibrary.simpleMessage("Efecto (Resumido)"),
@@ -44,21 +49,30 @@ class MessageLookup extends MessageLookupByLibrary {
         "items": MessageLookupByLibrary.simpleMessage("Objetos"),
         "jose": MessageLookupByLibrary.simpleMessage(
             "José Javier Quesada Madrigal"),
+        "learned_by_pokemon":
+            MessageLookupByLibrary.simpleMessage("Aprendido por Pokemon"),
         "locations": MessageLookupByLibrary.simpleMessage("Locaciones"),
-        "machines": MessageLookupByLibrary.simpleMessage("Máquinas (MTs)"),
-        "moves": MessageLookupByLibrary.simpleMessage("Movimientos (MOs)"),
+        "machines": MessageLookupByLibrary.simpleMessage("Máquinas"),
+        "machines_mts": MessageLookupByLibrary.simpleMessage("Máquinas (MTs)"),
+        "moves": MessageLookupByLibrary.simpleMessage("Movimientos"),
+        "moves_mos": MessageLookupByLibrary.simpleMessage("Movimientos (MOs)"),
         "name": MessageLookupByLibrary.simpleMessage("Nombre"),
         "no": MessageLookupByLibrary.simpleMessage("No"),
         "pokedexes": MessageLookupByLibrary.simpleMessage("Pokedexes"),
         "pokemons": MessageLookupByLibrary.simpleMessage("Pokémons"),
         "pokesAmount":
             MessageLookupByLibrary.simpleMessage("Cantidad de Pokémons"),
+        "power": MessageLookupByLibrary.simpleMessage("Power"),
+        "pp": MessageLookupByLibrary.simpleMessage("Puntos de Poder"),
+        "priority": MessageLookupByLibrary.simpleMessage("Prioridad"),
         "search": MessageLookupByLibrary.simpleMessage("Buscar"),
         "sections": MessageLookupByLibrary.simpleMessage("Secciones"),
         "selectALanguage":
             MessageLookupByLibrary.simpleMessage("Selecciona un lenguaje"),
         "settings": MessageLookupByLibrary.simpleMessage("Ajustes"),
+        "target": MessageLookupByLibrary.simpleMessage("Objetivo"),
         "theme": MessageLookupByLibrary.simpleMessage("Tema"),
+        "type": MessageLookupByLibrary.simpleMessage("Tipo"),
         "versions": MessageLookupByLibrary.simpleMessage("Versiones"),
         "yes": MessageLookupByLibrary.simpleMessage("Si")
       };

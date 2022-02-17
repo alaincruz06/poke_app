@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 import 'package:poke_app/src/domain/models/ability_model.dart';
 import 'package:poke_app/src/domain/models/item_model.dart';
+import 'package:poke_app/src/domain/models/move_model.dart';
 
 import 'dart:convert';
 import 'dart:async';
@@ -50,6 +51,15 @@ class PokemonProvider {
     final itemModel = ItemModel.fromJson(decodedData);
 
     return itemModel;
+  }
+
+  Future<MoveModel> getMovesByIdOrName(String name) async {
+    final url = Uri.https(_url, '/api/v2/move/$name/');
+    final resp = await http.get(url);
+    final decodedData = json.decode(resp.body);
+    final moveModel = MoveModel.fromJson(decodedData);
+
+    return moveModel;
   }
 
   /*Future<List<Pelicula>> _procesarRespuesta(Uri url) async {

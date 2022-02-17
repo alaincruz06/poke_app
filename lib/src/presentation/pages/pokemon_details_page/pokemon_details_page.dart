@@ -2,18 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:poke_app/src/data/remote_data/data_providers/pokemon_provider.dart';
 import 'package:poke_app/src/domain/models/ability_model.dart';
 import 'package:poke_app/src/domain/models/item_model.dart';
+import 'package:poke_app/src/domain/models/move_model.dart';
 import 'package:poke_app/src/domain/models/pokemon_model.dart';
 import 'package:poke_app/src/presentation/app/constants/methods.dart';
 import 'package:poke_app/src/presentation/app/lang/l10n.dart';
 import 'package:poke_app/src/presentation/widgets/loading_widget.dart';
 
 class PokemonDetailsPage extends StatelessWidget {
-  PokemonDetailsPage(
+  const PokemonDetailsPage(
       {Key? key, required this.pokemonName, required this.pokemonID})
       : super(key: key);
 
-  String pokemonName;
-  int pokemonID;
+  final String pokemonName;
+  final int pokemonID;
 
   @override
   Widget build(BuildContext context) {
@@ -59,6 +60,7 @@ class PokemonDetailsPage extends StatelessWidget {
                     child: Text(S.of(context).abilities,
                         style: Theme.of(context).textTheme.headline6),
                   ),
+                  //Abilities
                   ListView.builder(
                     physics: const BouncingScrollPhysics(),
                     shrinkWrap: true,
@@ -137,6 +139,7 @@ class PokemonDetailsPage extends StatelessWidget {
                     child: Text(S.of(context).held_items,
                         style: Theme.of(context).textTheme.headline6),
                   ),
+                  //Held Items
                   ListView.builder(
                     physics: const BouncingScrollPhysics(),
                     shrinkWrap: true,
@@ -188,6 +191,74 @@ class PokemonDetailsPage extends StatelessWidget {
                     },
                   ),
                   const Divider(),
+                  //Moves
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(S.of(context).moves,
+                        style: Theme.of(context).textTheme.headline6),
+                  ),
+                  ListView.builder(
+                    physics: const BouncingScrollPhysics(),
+                    shrinkWrap: true,
+                    itemCount: pokemonModel.moves?.length ?? 0,
+                    itemBuilder: (BuildContext context, int index) {
+                      return FutureBuilder(
+                          future: PokemonProvider().getMovesByIdOrName(
+                              pokemonModel.moves![index].move!.name!),
+                          builder:
+                              (BuildContext context, AsyncSnapshot snapshot) {
+                            if (!snapshot.hasData) {
+                              return const Center(child: LoadingWidget());
+                            } else {
+                              MoveModel moveModel = snapshot.data!;
+
+                              return Column(
+                                children: [
+                                  Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Text(S.of(context).name +
+                                          ": " +
+                                          moveModel.name!)),
+                                  Row(
+                                    children: [
+                                      Text(
+                                        S.of(context).accuracy +
+                                            ": " +
+                                            moveModel.accuracy.toString(),
+                                        textAlign: TextAlign.justify,
+                                      ),
+                                      Text(
+                                        S.of(context).pp +
+                                            ": " +
+                                            moveModel.pp.toString(),
+                                        textAlign: TextAlign.justify,
+                                      ),
+                                    ],
+                                  ),
+                                  Text(
+                                    S.of(context).type +
+                                        ": " +
+                                        moveModel.type!.name!,
+                                    textAlign: TextAlign.justify,
+                                  ),
+                                  Text(
+                                    S.of(context).damage_class +
+                                        ": " +
+                                        moveModel.damageClass!.name!,
+                                    textAlign: TextAlign.justify,
+                                  ),
+                                  Text(
+                                    S.of(context).damage_class +
+                                        ": " +
+                                        moveModel.damageClass!.name!,
+                                    textAlign: TextAlign.justify,
+                                  ),
+                                ],
+                              );
+                            }
+                          });
+                    },
+                  ),
                 ]),
               );
             }

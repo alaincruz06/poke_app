@@ -211,19 +211,39 @@ class S {
   }
 
   /// `Machines (MTs)`
-  String get machines {
+  String get machines_mts {
     return Intl.message(
       'Machines (MTs)',
-      name: 'machines',
+      name: 'machines_mts',
       desc: '',
       args: [],
     );
   }
 
   /// `Moves (MOs)`
-  String get moves {
+  String get moves_mos {
     return Intl.message(
       'Moves (MOs)',
+      name: 'moves_mos',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Machines`
+  String get machines {
+    return Intl.message(
+      'Machines',
+      name: 'machines',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Moves`
+  String get moves {
+    return Intl.message(
+      'Moves',
       name: 'moves',
       desc: '',
       args: [],
@@ -385,6 +405,106 @@ class S {
     return Intl.message(
       'Category',
       name: 'category',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Accuracy`
+  String get accuracy {
+    return Intl.message(
+      'Accuracy',
+      name: 'accuracy',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Effect Chance`
+  String get effect_chance {
+    return Intl.message(
+      'Effect Chance',
+      name: 'effect_chance',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Power Points`
+  String get pp {
+    return Intl.message(
+      'Power Points',
+      name: 'pp',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Priority`
+  String get priority {
+    return Intl.message(
+      'Priority',
+      name: 'priority',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Power`
+  String get power {
+    return Intl.message(
+      'Power',
+      name: 'power',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Damage Class`
+  String get damage_class {
+    return Intl.message(
+      'Damage Class',
+      name: 'damage_class',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Effect Entries`
+  String get effect_entries {
+    return Intl.message(
+      'Effect Entries',
+      name: 'effect_entries',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Learned by Pokemon`
+  String get learned_by_pokemon {
+    return Intl.message(
+      'Learned by Pokemon',
+      name: 'learned_by_pokemon',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Target`
+  String get target {
+    return Intl.message(
+      'Target',
+      name: 'target',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Type`
+  String get type {
+    return Intl.message(
+      'Type',
+      name: 'type',
       desc: '',
       args: [],
     );
