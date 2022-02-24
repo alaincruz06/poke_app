@@ -44,10 +44,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "evolutionChains":
             MessageLookupByLibrary.simpleMessage("Cadenas de Evolución"),
         "evolutions": MessageLookupByLibrary.simpleMessage("Evoluciones"),
+        "firmness": MessageLookupByLibrary.simpleMessage("Firmeza"),
         "generation": MessageLookupByLibrary.simpleMessage("Generación"),
         "generations": MessageLookupByLibrary.simpleMessage("Generaciones"),
+        "growth": MessageLookupByLibrary.simpleMessage("Crecimiento"),
+        "harvest": MessageLookupByLibrary.simpleMessage("Cosecha máxima"),
         "height": MessageLookupByLibrary.simpleMessage("Altura"),
         "held_items": MessageLookupByLibrary.simpleMessage("Objetos encima"),
+        "help": MessageLookupByLibrary.simpleMessage("Ayuda"),
         "id_name": MessageLookupByLibrary.simpleMessage("id/nombre"),
         "is_main_series":
             MessageLookupByLibrary.simpleMessage("Es de la Serie Original"),
@@ -62,6 +66,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "moves": MessageLookupByLibrary.simpleMessage("Movimientos"),
         "moves_mos": MessageLookupByLibrary.simpleMessage("Movimientos (MOs)"),
         "name": MessageLookupByLibrary.simpleMessage("Nombre"),
+        "naturalGiftPower":
+            MessageLookupByLibrary.simpleMessage("Potencia (Regalo Natural)"),
         "no": MessageLookupByLibrary.simpleMessage("No"),
         "noBerriesFound":
             MessageLookupByLibrary.simpleMessage("No se encontraron Bayas"),
@@ -79,6 +85,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "selectALanguage":
             MessageLookupByLibrary.simpleMessage("Selecciona un lenguaje"),
         "settings": MessageLookupByLibrary.simpleMessage("Ajustes"),
+        "size": MessageLookupByLibrary.simpleMessage("Tamaño"),
+        "smoothness": MessageLookupByLibrary.simpleMessage("Suavidad"),
+        "soildryness": MessageLookupByLibrary.simpleMessage("Secado del Suelo"),
         "species": MessageLookupByLibrary.simpleMessage("Especie"),
         "stats": MessageLookupByLibrary.simpleMessage("Estadísticas"),
         "target": MessageLookupByLibrary.simpleMessage("Objetivo"),

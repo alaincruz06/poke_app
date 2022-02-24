@@ -53,5 +53,13 @@
     "stats": "Estadísticas",
     "doesntcarryitems": "No lleva objetos encima",
     "cost": "Coste",
-    "evolutions": "Evoluciones"
+    "evolutions": "Evoluciones",
+    "growth": "Crecimiento",
+    "harvest": "Cosecha máxima",
+    "size" : "Tamaño",
+    "help": "Ayuda",
+    "smoothness": "Suavidad",
+    "naturalGiftPower": "Potencia (Regalo Natural)",
+    "soildryness": "Secado del Suelo",
+    "firmness": "Firmeza"
 }

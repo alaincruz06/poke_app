@@ -47,10 +47,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "evolutionChains":
             MessageLookupByLibrary.simpleMessage("Evolution Chains"),
         "evolutions": MessageLookupByLibrary.simpleMessage("Evolutions"),
+        "firmness": MessageLookupByLibrary.simpleMessage("Firmness"),
         "generation": MessageLookupByLibrary.simpleMessage("Generation"),
         "generations": MessageLookupByLibrary.simpleMessage("Generations"),
+        "growth": MessageLookupByLibrary.simpleMessage("Growth"),
+        "harvest": MessageLookupByLibrary.simpleMessage("Harvest"),
         "height": MessageLookupByLibrary.simpleMessage("Height"),
         "held_items": MessageLookupByLibrary.simpleMessage("Held Items"),
+        "help": MessageLookupByLibrary.simpleMessage("Help"),
         "id_name": MessageLookupByLibrary.simpleMessage("id/name"),
         "is_main_series":
             MessageLookupByLibrary.simpleMessage("Is Main Series"),
@@ -65,6 +69,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "moves": MessageLookupByLibrary.simpleMessage("Moves"),
         "moves_mos": MessageLookupByLibrary.simpleMessage("Moves (MOs)"),
         "name": MessageLookupByLibrary.simpleMessage("Name"),
+        "naturalGiftPower":
+            MessageLookupByLibrary.simpleMessage("Natural Gift Power"),
         "no": MessageLookupByLibrary.simpleMessage("No"),
         "noBerriesFound":
             MessageLookupByLibrary.simpleMessage("No Berries found"),
@@ -81,6 +87,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "selectALanguage":
             MessageLookupByLibrary.simpleMessage("Select a language"),
         "settings": MessageLookupByLibrary.simpleMessage("Settings"),
+        "size": MessageLookupByLibrary.simpleMessage("Size"),
+        "smoothness": MessageLookupByLibrary.simpleMessage("Smoothness"),
+        "soildryness": MessageLookupByLibrary.simpleMessage("Soil Dryness"),
         "species": MessageLookupByLibrary.simpleMessage("Species"),
         "stats": MessageLookupByLibrary.simpleMessage("Stats"),
         "target": MessageLookupByLibrary.simpleMessage("Target"),

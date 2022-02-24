@@ -2,10 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:poke_app/src/data/remote_data/data_providers/berry_provider.dart';
 import 'package:poke_app/src/domain/models/berry_model.dart';
+import 'package:poke_app/src/domain/models/item_model.dart';
 import 'package:poke_app/src/domain/models/results_model.dart';
 import 'package:poke_app/src/presentation/app/constants/assets.dart';
+import 'package:poke_app/src/presentation/app/constants/methods.dart';
 import 'package:poke_app/src/presentation/app/lang/l10n.dart';
 import 'package:poke_app/src/presentation/app/theme/colors.dart';
+import 'package:poke_app/src/presentation/pages/berries_page/widgets/berry_container_widget.dart';
+import 'package:poke_app/src/presentation/pages/pokemon_page/widgets/pokemon_container_widget.dart';
 import 'package:poke_app/src/presentation/widgets/loading_widget.dart';
 
 class BerriesPage extends StatefulWidget {
@@ -21,6 +25,7 @@ class _BerriesPageState extends State<BerriesPage> {
 
   Future<void> _getParams() async {
     ResultsModel resultsModel = await BerryProvider().getBerries();
+
     setState(() {
       _cantidadDeBayas = resultsModel.count ?? 0;
     });
@@ -38,7 +43,8 @@ class _BerriesPageState extends State<BerriesPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(S.of(context).berries + " (" + _cantidadDeBayas.toString() + ")",
+        title: Text(
+            S.of(context).berries + " (" + _cantidadDeBayas.toString() + ")",
             style: Theme.of(context).textTheme.headline6),
       ),
       body: Stack(
@@ -121,25 +127,28 @@ class _BerriesPageState extends State<BerriesPage> {
                   padding: const EdgeInsets.only(top: 90.0),
                   child: FutureBuilder(
                     future: BerryProvider().getBerryByIdOrName(_textToSearch),
-                    builder: (BuildContext context, AsyncSnapshot<BerryModel> snapshot) {
+                    builder: (BuildContext context,
+                        AsyncSnapshot<BerryModel> snapshot) {
                       if (!snapshot.hasData) {
                         return Column(
                           children: [
                             Expanded(
-                              child:
-                                  ClipRect(child: SvgPicture.asset(Assets.assetsImagesPikachuSvg)),
+                              child: ClipRect(
+                                  child: SvgPicture.asset(
+                                      Assets.assetsImagesPikachuSvg)),
                             ),
                             Expanded(child: Text(S.of(context).noBerriesFound)),
                           ],
                         );
                       } else {
-                        PokemonModel pokemonModel = snapshot.data!;
+                        BerryModel berryModel = snapshot.data!;
 
                         return Center(
                             child: SizedBox(
                                 height: 200,
                                 width: 200,
-                                child: pokemonContainer(context, pokemonModel.name!)));
+                                child: pokemonContainer(
+                                    context, berryModel.name!.capitalize())));
                       }
                     },
                   ),
@@ -150,8 +159,8 @@ class _BerriesPageState extends State<BerriesPage> {
   }
 }
 
-class ListaPokemons extends StatelessWidget {
-  ListaPokemons({
+class ListaBerries extends StatelessWidget {
+  ListaBerries({
     Key? key,
     required this.results,
   }) : super(key: key);
@@ -184,7 +193,7 @@ class ListaPokemons extends StatelessWidget {
       physics: const BouncingScrollPhysics(),
       itemCount: results.length,
       itemBuilder: (context, index) {
-        return pokemonContainer(
+        return berryContainer(
           context,
           results[index].name!,
         );

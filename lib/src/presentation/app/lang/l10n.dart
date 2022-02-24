@@ -599,6 +599,86 @@ class S {
       args: [],
     );
   }
+
+  /// `Growth`
+  String get growth {
+    return Intl.message(
+      'Growth',
+      name: 'growth',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Harvest`
+  String get harvest {
+    return Intl.message(
+      'Harvest',
+      name: 'harvest',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Size`
+  String get size {
+    return Intl.message(
+      'Size',
+      name: 'size',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Help`
+  String get help {
+    return Intl.message(
+      'Help',
+      name: 'help',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Smoothness`
+  String get smoothness {
+    return Intl.message(
+      'Smoothness',
+      name: 'smoothness',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Natural Gift Power`
+  String get naturalGiftPower {
+    return Intl.message(
+      'Natural Gift Power',
+      name: 'naturalGiftPower',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Soil Dryness`
+  String get soildryness {
+    return Intl.message(
+      'Soil Dryness',
+      name: 'soildryness',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Firmness`
+  String get firmness {
+    return Intl.message(
+      'Firmness',
+      name: 'firmness',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

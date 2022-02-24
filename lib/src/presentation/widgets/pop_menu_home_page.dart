@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:poke_app/src/presentation/app/lang/l10n.dart';
 import 'package:poke_app/src/presentation/pages/about_page/about_page.dart';
+import 'package:poke_app/src/presentation/pages/help_page/help_page.dart';
 import 'package:poke_app/src/presentation/pages/settings_page/settings_page.dart';
 
 class PopMenuHomePage extends StatelessWidget {
@@ -15,7 +16,7 @@ class PopMenuHomePage extends StatelessWidget {
       itemBuilder: (BuildContext context) {
         return [
           PopupMenuItem(
-            value: 'Ajustes',
+            value: 'Settings',
             child: Row(
               children: [
                 Icon(
@@ -25,7 +26,22 @@ class PopMenuHomePage extends StatelessWidget {
                 const SizedBox(
                   width: 10.0,
                 ),
-                 Text(S.of(context).settings),
+                Text(S.of(context).settings),
+              ],
+            ),
+          ),
+          PopupMenuItem(
+            value: 'Help',
+            child: Row(
+              children: [
+                Icon(
+                  Icons.person_pin_rounded,
+                  color: Theme.of(context).iconTheme.color,
+                ),
+                const SizedBox(
+                  width: 10.0,
+                ),
+                Text(S.of(context).about),
               ],
             ),
           ),
@@ -40,7 +56,7 @@ class PopMenuHomePage extends StatelessWidget {
                 const SizedBox(
                   width: 10.0,
                 ),
-                 Text(S.of(context).about),
+                Text(S.of(context).about),
               ],
             ),
           ),
@@ -56,18 +72,25 @@ class PopMenuHomePage extends StatelessWidget {
       ),
       onSelected: (selectedItem) async {
         switch (selectedItem) {
-          case 'Ajustes':
+          case 'Settings':
             final route = MaterialPageRoute(
-                  builder: (context) => SettingsPage(),
-                );
-                Navigator.push(context, route); 
+              builder: (context) => SettingsPage(),
+            );
+            Navigator.push(context, route);
             break;
-         
+
+          case 'Help':
+            final route = MaterialPageRoute(
+              builder: (context) => HelpPage(),
+            );
+            Navigator.push(context, route);
+            break;
+
           case 'About':
-             final route = MaterialPageRoute(
-                  builder: (context) => AboutPage(),
-                );
-                Navigator.push(context, route); 
+            final route = MaterialPageRoute(
+              builder: (context) => AboutPage(),
+            );
+            Navigator.push(context, route);
             break;
         }
       },

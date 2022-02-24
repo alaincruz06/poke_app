@@ -53,5 +53,13 @@
     "stats": "Stats",
     "doesntcarryitems": "Doesn't carry any items",
     "cost": "Cost",
-    "evolutions": "Evolutions"
+    "evolutions": "Evolutions",
+    "growth": "Growth",
+    "harvest": "Harvest",
+    "size": "Size",
+    "help": "Help",
+    "smoothness": "Smoothness",
+    "naturalGiftPower": "Natural Gift Power",
+    "soildryness" : "Soil Dryness",
+    "firmness" : "Firmness"
 }
