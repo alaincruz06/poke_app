@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_svg_provider/flutter_svg_provider.dart' as svgProvider;
 import 'package:poke_app/src/data/remote_data/data_providers/pokemon_provider.dart';
 import 'package:poke_app/src/domain/models/pokemon_model.dart';
 import 'package:poke_app/src/domain/models/results_model.dart';
@@ -17,116 +18,141 @@ class PokemonPage extends StatefulWidget {
 }
 
 class _PokemonPageState extends State<PokemonPage> {
-
   String _textToSearch = "";
   int _cantidadDePokes = 0;
 
-  Future<void> _getParams() async{
-
-ResultsModel resultsModel =  await PokemonProvider().getPokemons();
-setState((){
-  _cantidadDePokes =  resultsModel.count ?? 0;
-});
-
+  Future<void> _getParams() async {
+    ResultsModel resultsModel = await PokemonProvider().getPokemons();
+    setState(() {
+      _cantidadDePokes = resultsModel.count ?? 0;
+    });
   }
 
   @override
   void initState() {
-      WidgetsBinding.instance?.addPostFrameCallback((_) {
-        _getParams();
-      });
+    WidgetsBinding.instance?.addPostFrameCallback((_) {
+      _getParams();
+    });
     super.initState();
-    
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(S.of(context).pokemons + " (" + _cantidadDePokes.toString() + ")", style: Theme.of(context).textTheme.headline6,
+        title: Text(
+          S.of(context).pokemons + " (" + _cantidadDePokes.toString() + ")",
+          style: Theme.of(context).textTheme.headline6,
         ),
       ),
-      body: 
-      Stack(
+      body: Stack(
         alignment: AlignmentDirectional.topCenter,
         children: [
-           Padding(
-              padding: const EdgeInsets.all(18.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Expanded(flex: 1,
-                   child: 
-                   Image.asset(Assets.assetsImagesPokesearch, height: 70,)),
-                  Expanded(flex: 2,
-                   child: TextField(
-                       cursorColor: PokeColor().shadowBlue,
-                       style: Theme.of(context).textTheme.bodyText2,
-                       textCapitalization: TextCapitalization.none,
-                       decoration: InputDecoration(
-                         fillColor: PokeColor().softBlue,
-                         floatingLabelBehavior: FloatingLabelBehavior.always,
-                         labelText: S.of(context).search,
-                         hintText: S.of(context).id_name,
-                         labelStyle: Theme.of(context).textTheme.bodyText2,
-                       ),
-                       onSubmitted: (valor) {
-                         setState(() {
-                           _textToSearch = valor;
-                         });
-                       },
-                     ),
-                 ),
-                ],
-              ),
+          Padding(
+            padding: const EdgeInsets.all(18.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Expanded(
+                  flex: 1,
+                  child: /* Image.asset(
+                    Assets.assetsImagesPokesearch,
+                    width: 30,
+                    height: 30,
+                  ) */
+                      Container(
+                    height: 90,
+                    width: MediaQuery.of(context).size.width * 0.5,
+                    /* decoration: BoxDecoration(
+                        image: const DecorationImage(
+                            fit: BoxFit.cover,
+                            image:
+                                svgProvider.Svg(Assets.assetsImagesPikachuSvg)),
+                        borderRadius: BorderRadius.circular(20.0)), */
+                  ),
+                ),
+                /*  SvgPicture.asset(
+                    Assets.assetsImagesPikachuSvg,
+                    width: 80,
+                    height: 80,
+                  ) */
+                /* SvgPicture.asset(Assets.assetsImagesPikachuSvg) */
+
+                Expanded(
+                  flex: 2,
+                  child: TextField(
+                    cursorColor: PokeColor().shadowBlue,
+                    style: Theme.of(context).textTheme.bodyText2,
+                    textCapitalization: TextCapitalization.none,
+                    decoration: InputDecoration(
+                      fillColor: PokeColor().softBlue,
+                      floatingLabelBehavior: FloatingLabelBehavior.always,
+                      labelText: S.of(context).search,
+                      hintText: S.of(context).id_name,
+                      labelStyle: Theme.of(context).textTheme.bodyText2,
+                    ),
+                    onSubmitted: (valor) {
+                      setState(() {
+                        _textToSearch = valor;
+                      });
+                    },
+                  ),
+                ),
+              ],
             ),
-             _textToSearch == "" ?
-              Padding(
-                 padding: const EdgeInsets.only(top: 90.0),
-                child: FutureBuilder(
-                 future: PokemonProvider().getPokemons(),
-                 builder: (BuildContext context, AsyncSnapshot snapshot) {
-                  if(!snapshot.hasData){
-                    return const Center(child: LoadingWidget());
-                  }
-                  else {
-                  ResultsModel pokemonsModel = snapshot.data!;
-                List<Result>? results  = pokemonsModel.results ?? [];
-          
-                   return ListaPokemons(
-             results: results,
-            // siguientePagina: PokemonProvider().getAllCharactersImpl,
-                );
-                  }
-                 },
-             ),
-              )  :
-              
-               Padding(
-                 padding: const EdgeInsets.only(top: 90.0),
-                 child: FutureBuilder(
-                   future: PokemonProvider().getPokemonByIdOrName(_textToSearch),
-                   builder: (BuildContext context, AsyncSnapshot<PokemonModel> snapshot) {
-                     if(!snapshot.hasData){
-                       //Sad Pikachu (no hay pokemons con el criterio introducido)
-                    return const Center(child: LoadingWidget());
-                  }
-                  else {
-                    PokemonModel pokemonModel = snapshot.data!;
-                 
-          
-                   return Center(child: SizedBox(height: 200, width: 200,child: pokemonContainer(context, pokemonModel.name!)));
-                  }
-                 },
-                 ),
-               ),
+          ),
+          _textToSearch == ""
+              ? Padding(
+                  padding: const EdgeInsets.only(top: 90.0),
+                  child: FutureBuilder(
+                    future: PokemonProvider().getPokemons(),
+                    builder: (BuildContext context, AsyncSnapshot snapshot) {
+                      if (!snapshot.hasData) {
+                        return const Center(child: LoadingWidget());
+                      } else {
+                        ResultsModel pokemonsModel = snapshot.data!;
+                        List<Result>? results = pokemonsModel.results ?? [];
+
+                        return ListaPokemons(
+                          results: results,
+                          // siguientePagina: PokemonProvider().getAllCharactersImpl,
+                        );
+                      }
+                    },
+                  ),
+                )
+              : Padding(
+                  padding: const EdgeInsets.only(top: 90.0),
+                  child: FutureBuilder(
+                    future: PokemonProvider().getPokemonByIdOrName(_textToSearch),
+                    builder: (BuildContext context, AsyncSnapshot<PokemonModel> snapshot) {
+                      if (!snapshot.hasData) {
+                        return Column(
+                          children: [
+                            Expanded(
+                              child:
+                                  ClipRect(child: SvgPicture.asset(Assets.assetsImagesPikachuSvg)),
+                            ),
+                            Expanded(child: Text(S.of(context).noPokemonsFound)),
+                          ],
+                        );
+                      } else {
+                        PokemonModel pokemonModel = snapshot.data!;
+
+                        return Center(
+                            child: SizedBox(
+                                height: 200,
+                                width: 200,
+                                child: pokemonContainer(context, pokemonModel.name!)));
+                      }
+                    },
+                  ),
+                ),
         ],
       ),
     );
   }
 }
-
 
 class ListaPokemons extends StatelessWidget {
   ListaPokemons({
@@ -139,11 +165,11 @@ class ListaPokemons extends StatelessWidget {
     initialPage: 0,
     viewportFraction: 0.2,
   );
- // final Function siguientePagina;
+  // final Function siguientePagina;
 
   @override
   Widget build(BuildContext context) {
-  /*   _pageController.addListener(() {
+    /*   _pageController.addListener(() {
       if (_pageController.position.pixels >=
           _pageController.position.maxScrollExtent) {
             debugPrint("Siguiente Pagina");
@@ -152,18 +178,19 @@ class ListaPokemons extends StatelessWidget {
     }); */
 
     return GridView.builder(
-    gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                maxCrossAxisExtent: 200,
-                childAspectRatio: 3 / 2,
-                crossAxisSpacing: 20,
-                mainAxisSpacing: 20),
+      gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+          maxCrossAxisExtent: 200,
+          childAspectRatio: 3 / 2,
+          crossAxisSpacing: 20,
+          mainAxisSpacing: 20),
       shrinkWrap: true,
       //controller: _pageController,
       physics: const BouncingScrollPhysics(),
       itemCount: results.length,
       itemBuilder: (context, index) {
         return pokemonContainer(
-          context, results[index].name!, 
+          context,
+          results[index].name!,
         );
       },
     );

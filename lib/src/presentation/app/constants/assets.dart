@@ -57,13 +57,25 @@ class Assets {
   /// assets/icons/visual_game_boy_100px.png
   static const String assetsIconsVisualGameBoy100px = "assets/icons/visual_game_boy_100px.png";
 
+  /// Assets for assetsImagesPikachuSvg
+  /// assets/images/pikachu_svg.svg
+  static const String assetsImagesPikachuSvg = "assets/images/pikachu_svg.svg";
+
   /// Assets for assetsImagesPokeapi256
   /// assets/images/pokeapi_256.png
   static const String assetsImagesPokeapi256 = "assets/images/pokeapi_256.png";
 
+  /// Assets for assetsImagesPokeballSvg
+  /// assets/images/pokeball_Svg.svg
+  static const String assetsImagesPokeballSvg = "assets/images/pokeball_Svg.svg";
+
   /// Assets for assetsImagesPokedexAppLogo
   /// assets/images/pokedex_app_logo.jpg
   static const String assetsImagesPokedexAppLogo = "assets/images/pokedex_app_logo.jpg";
+
+  /// Assets for assetsImagesPokedexAppLogoPng
+  /// assets/images/pokedex_app_logo_png.png
+  static const String assetsImagesPokedexAppLogoPng = "assets/images/pokedex_app_logo_png.png";
 
   /// Assets for assetsImagesPokedexLogo
   /// assets/images/pokedex_logo.png

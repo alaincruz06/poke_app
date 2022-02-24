@@ -1,57 +1,65 @@
-// To parse this JSON data, do
-//
-//     final resultsModel = resultsModelFromJson(jsonString);
-
-import 'dart:convert';
-
-ResultsModel resultsModelFromJson(String str) => ResultsModel.fromJson(json.decode(str));
-
-String resultsModelToJson(ResultsModel data) => json.encode(data.toJson());
-
 class ResultsModel {
-    ResultsModel({
-        this.count,
-        this.next,
-        this.previous,
-        this.results,
-    });
+  ResultsModel({
+    required this.count,
+    required this.next,
+    required this.previous,
+    required this.results,
+  });
 
-    int? count;
-    String? next;
-    dynamic previous;
-    List<Result>? results;
+  final int? count;
+  final String? next;
+  final dynamic previous;
+  final List<Result>? results;
 
-    factory ResultsModel.fromJson(Map<String, dynamic> json) => ResultsModel(
-        count: json["count"],
-        next: json["next"],
-        previous: json["previous"],
-        results: List<Result>.from(json["results"].map((x) => Result.fromJson(x))),
+  ResultsModel copyWith({
+    int? count,
+    String? next,
+    dynamic? previous,
+    List<Result>? results,
+  }) {
+    return ResultsModel(
+      count: count ?? this.count,
+      next: next ?? this.next,
+      previous: previous ?? this.previous,
+      results: results ?? this.results,
     );
+  }
 
-    Map<String, dynamic> toJson() => {
-        "count": count,
-        "next": next,
-        "previous": previous,
-        "results": List<dynamic>.from(results!.map((x) => x.toJson())),
-    };
+  factory ResultsModel.fromJson(Map<String, dynamic> json) {
+    return ResultsModel(
+      count: json["count"] == null ? null : json["count"],
+      next: json["next"] == null ? null : json["next"],
+      previous: json["previous"],
+      results: json["results"] == null
+          ? null
+          : List<Result>.from(json["results"].map((x) => Result.fromJson(x))),
+    );
+  }
 }
 
 class Result {
-    Result({
-        this.name,
-        this.url,
-    });
+  Result({
+    required this.name,
+    required this.url,
+  });
 
-    String? name;
-    String? url;
+  final String? name;
+  final String? url;
 
-    factory Result.fromJson(Map<String, dynamic> json) => Result(
-        name: json["name"],
-        url: json["url"],
+  Result copyWith({
+    String? name,
+    String? url,
+  }) {
+    return Result(
+      name: name ?? this.name,
+      url: url ?? this.url,
     );
+  }
 
-    Map<String, dynamic> toJson() => {
-        "name": name,
-        "url": url,
-    };
+  factory Result.fromJson(Map<String, dynamic> json) {
+    return Result(
+      name: json["name"] == null ? null : json["name"],
+      url: json["url"] == null ? null : json["url"],
+    );
+  }
 }

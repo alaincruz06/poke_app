@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
+import 'package:http/http.dart';
 import 'package:poke_app/src/domain/models/ability_model.dart';
 import 'package:poke_app/src/domain/models/item_model.dart';
 import 'package:poke_app/src/domain/models/move_model.dart';
@@ -29,7 +30,9 @@ class PokemonProvider {
       'Content-Type': 'application/json',
     'Charset': 'utf-8'} */
         );
-    final decodedData = json.decode(resp.body);
+
+    final decodedData =
+        resp.body != "Not Found" ? json.decode(resp.body) : null;
     final pokemonModel = PokemonModel.fromJson(decodedData);
 
     return pokemonModel;

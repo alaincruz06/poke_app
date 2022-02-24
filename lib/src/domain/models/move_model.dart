@@ -1,335 +1,450 @@
-// To parse this JSON data, do
-//
-//     final moveModel = moveModelFromJson(jsonString);
-
-import 'dart:convert';
-
-MoveModel moveModelFromJson(String str) => MoveModel.fromJson(json.decode(str));
-
-String moveModelToJson(MoveModel data) => json.encode(data.toJson());
-
 class MoveModel {
   MoveModel({
-    this.accuracy,
-    this.contestCombos,
-    this.contestEffect,
-    this.contestType,
-    this.damageClass,
-    this.effectChance,
-    this.effectChanges,
-    this.effectEntries,
-    this.flavorTextEntries,
-    this.generation,
-    this.id,
-    this.learnedByPokemon,
-    this.machines,
-    this.meta,
-    this.name,
-    this.names,
-    this.pastValues,
-    this.power,
-    this.pp,
-    this.priority,
-    this.statChanges,
-    this.superContestEffect,
-    this.target,
-    this.type,
+    required this.id,
+    required this.name,
+    required this.accuracy,
+    required this.effectChance,
+    required this.pp,
+    required this.priority,
+    required this.power,
+    required this.contestCombos,
+    required this.contestType,
+    required this.contestEffect,
+    required this.damageClass,
+    required this.effectEntries,
+    required this.effectChanges,
+    required this.generation,
+    required this.meta,
+    required this.names,
+    required this.pastValues,
+    required this.statChanges,
+    required this.superContestEffect,
+    required this.target,
+    required this.type,
+    required this.learnedByPokemon,
+    required this.flavorTextEntries,
   });
 
-  int? accuracy;
-  ContestCombos? contestCombos;
-  ContestEffect? contestEffect;
-  ContestType? contestType;
-  ContestType? damageClass;
-  dynamic effectChance;
-  List<dynamic>? effectChanges;
-  List<EffectEntry>? effectEntries;
-  List<FlavorTextEntry>? flavorTextEntries;
-  ContestType? generation;
-  int? id;
-  List<ContestType>? learnedByPokemon;
-  List<dynamic>? machines;
-  Meta? meta;
-  String? name;
-  List<Name>? names;
-  List<dynamic>? pastValues;
-  int? power;
-  int? pp;
-  int? priority;
-  List<dynamic>? statChanges;
-  ContestEffect? superContestEffect;
-  ContestType? target;
-  ContestType? type;
+  final int id;
+  final String? name;
+  final dynamic? accuracy;
+  final dynamic effectChance;
+  final int? pp;
+  final int? priority;
+  final int? power;
+  final ContestCombos? contestCombos;
+  final ContestType? contestType;
+  final ContestEffect? contestEffect;
+  final ContestType? damageClass;
+  final List<EffectEntry>? effectEntries;
+  final List<dynamic>? effectChanges;
+  final ContestType? generation;
+  final Meta? meta;
+  final List<Name>? names;
+  final List<dynamic>? pastValues;
+  final List<dynamic>? statChanges;
+  final ContestEffect? superContestEffect;
+  final ContestType? target;
+  final ContestType? type;
+  final List<ContestType>? learnedByPokemon;
+  final List<FlavorTextEntry>? flavorTextEntries;
 
-  factory MoveModel.fromJson(Map<String, dynamic> json) => MoveModel(
-        accuracy: json["accuracy"],
-        contestCombos: ContestCombos.fromJson(json["contest_combos"]),
-        contestEffect: ContestEffect.fromJson(json["contest_effect"]),
-        contestType: ContestType.fromJson(json["contest_type"]),
-        damageClass: ContestType.fromJson(json["damage_class"]),
-        effectChance: json["effect_chance"],
-        effectChanges: List<dynamic>.from(json["effect_changes"].map((x) => x)),
-        effectEntries: List<EffectEntry>.from(
-            json["effect_entries"].map((x) => EffectEntry.fromJson(x))),
-        flavorTextEntries: List<FlavorTextEntry>.from(
-            json["flavor_text_entries"]
-                .map((x) => FlavorTextEntry.fromJson(x))),
-        generation: ContestType.fromJson(json["generation"]),
-        id: json["id"],
-        learnedByPokemon: List<ContestType>.from(
-            json["learned_by_pokemon"].map((x) => ContestType.fromJson(x))),
-        machines: List<dynamic>.from(json["machines"].map((x) => x)),
-        meta: Meta.fromJson(json["meta"]),
-        name: json["name"],
-        names: List<Name>.from(json["names"].map((x) => Name.fromJson(x))),
-        pastValues: List<dynamic>.from(json["past_values"].map((x) => x)),
-        power: json["power"],
-        pp: json["pp"],
-        priority: json["priority"],
-        statChanges: List<dynamic>.from(json["stat_changes"].map((x) => x)),
-        superContestEffect:
-            ContestEffect.fromJson(json["super_contest_effect"]),
-        target: ContestType.fromJson(json["target"]),
-        type: ContestType.fromJson(json["type"]),
-      );
+  MoveModel copyWith({
+    int? id,
+    String? name,
+    dynamic? accuracy,
+    dynamic? effectChance,
+    int? pp,
+    int? priority,
+    int? power,
+    ContestCombos? contestCombos,
+    ContestType? contestType,
+    ContestEffect? contestEffect,
+    ContestType? damageClass,
+    List<EffectEntry>? effectEntries,
+    List<dynamic>? effectChanges,
+    ContestType? generation,
+    Meta? meta,
+    List<Name>? names,
+    List<dynamic>? pastValues,
+    List<dynamic>? statChanges,
+    ContestEffect? superContestEffect,
+    ContestType? target,
+    ContestType? type,
+    List<ContestType>? learnedByPokemon,
+    List<FlavorTextEntry>? flavorTextEntries,
+  }) {
+    return MoveModel(
+      id: id ?? this.id,
+      name: name ?? this.name,
+      accuracy: accuracy ?? "-",
+      effectChance: effectChance ?? this.effectChance,
+      pp: pp ?? this.pp,
+      priority: priority ?? this.priority,
+      power: power ?? this.power,
+      contestCombos: contestCombos ?? this.contestCombos,
+      contestType: contestType ?? this.contestType,
+      contestEffect: contestEffect ?? this.contestEffect,
+      damageClass: damageClass ?? this.damageClass,
+      effectEntries: effectEntries ?? this.effectEntries,
+      effectChanges: effectChanges ?? this.effectChanges,
+      generation: generation ?? this.generation,
+      meta: meta ?? this.meta,
+      names: names ?? this.names,
+      pastValues: pastValues ?? this.pastValues,
+      statChanges: statChanges ?? this.statChanges,
+      superContestEffect: superContestEffect ?? this.superContestEffect,
+      target: target ?? this.target,
+      type: type ?? this.type,
+      learnedByPokemon: learnedByPokemon ?? this.learnedByPokemon,
+      flavorTextEntries: flavorTextEntries ?? this.flavorTextEntries,
+    );
+  }
 
-  Map<String, dynamic> toJson() => {
-        "accuracy": accuracy,
-        "contest_combos": contestCombos?.toJson(),
-        "contest_effect": contestEffect?.toJson(),
-        "contest_type": contestType?.toJson(),
-        "damage_class": damageClass?.toJson(),
-        "effect_chance": effectChance,
-        "effect_changes": List<dynamic>.from(effectChanges!.map((x) => x)),
-        "effect_entries":
-            List<dynamic>.from(effectEntries!.map((x) => x.toJson())),
-        "flavor_text_entries":
-            List<dynamic>.from(flavorTextEntries!.map((x) => x.toJson())),
-        "generation": generation?.toJson(),
-        "id": id,
-        "learned_by_pokemon":
-            List<dynamic>.from(learnedByPokemon!.map((x) => x.toJson())),
-        "machines": List<dynamic>.from(machines!.map((x) => x)),
-        "meta": meta?.toJson(),
-        "name": name,
-        "names": List<dynamic>.from(names!.map((x) => x.toJson())),
-        "past_values": List<dynamic>.from(pastValues!.map((x) => x)),
-        "power": power,
-        "pp": pp,
-        "priority": priority,
-        "stat_changes": List<dynamic>.from(statChanges!.map((x) => x)),
-        "super_contest_effect": superContestEffect?.toJson(),
-        "target": target?.toJson(),
-        "type": type?.toJson(),
-      };
+  factory MoveModel.fromJson(Map<String, dynamic> json) {
+    return MoveModel(
+      id: json["id"] == null ? null : json["id"],
+      name: json["name"] == null ? null : json["name"],
+      accuracy: json["accuracy"] == null ? null : json["accuracy"],
+      effectChance: json["effect_chance"],
+      pp: json["pp"] == null ? null : json["pp"],
+      priority: json["priority"] == null ? null : json["priority"],
+      power: json["power"] == null ? null : json["power"],
+      contestCombos: json["contest_combos"] == null
+          ? null
+          : ContestCombos.fromJson(json["contest_combos"]),
+      contestType: json["contest_type"] == null
+          ? null
+          : ContestType.fromJson(json["contest_type"]),
+      contestEffect: json["contest_effect"] == null
+          ? null
+          : ContestEffect.fromJson(json["contest_effect"]),
+      damageClass: json["damage_class"] == null
+          ? null
+          : ContestType.fromJson(json["damage_class"]),
+      effectEntries: json["effect_entries"] == null
+          ? null
+          : List<EffectEntry>.from(
+              json["effect_entries"].map((x) => EffectEntry.fromJson(x))),
+      effectChanges: json["effect_changes"] == null
+          ? null
+          : List<dynamic>.from(json["effect_changes"].map((x) => x)),
+      generation: json["generation"] == null
+          ? null
+          : ContestType.fromJson(json["generation"]),
+      meta: json["meta"] == null ? null : Meta.fromJson(json["meta"]),
+      names: json["names"] == null
+          ? null
+          : List<Name>.from(json["names"].map((x) => Name.fromJson(x))),
+      pastValues: json["past_values"] == null
+          ? null
+          : List<dynamic>.from(json["past_values"].map((x) => x)),
+      statChanges: json["stat_changes"] == null
+          ? null
+          : List<dynamic>.from(json["stat_changes"].map((x) => x)),
+      superContestEffect: json["super_contest_effect"] == null
+          ? null
+          : ContestEffect.fromJson(json["super_contest_effect"]),
+      target:
+          json["target"] == null ? null : ContestType.fromJson(json["target"]),
+      type: json["type"] == null ? null : ContestType.fromJson(json["type"]),
+      learnedByPokemon: json["learned_by_pokemon"] == null
+          ? null
+          : List<ContestType>.from(
+              json["learned_by_pokemon"].map((x) => ContestType.fromJson(x))),
+      flavorTextEntries: json["flavor_text_entries"] == null
+          ? null
+          : List<FlavorTextEntry>.from(json["flavor_text_entries"]
+              .map((x) => FlavorTextEntry.fromJson(x))),
+    );
+  }
 }
 
 class ContestCombos {
   ContestCombos({
-    this.normal,
-    this.contestCombosSuper,
+    required this.normal,
+    required this.contestCombosSuper,
   });
 
-  Normal? normal;
-  Normal? contestCombosSuper;
+  final Normal? normal;
+  final Normal? contestCombosSuper;
 
-  factory ContestCombos.fromJson(Map<String, dynamic> json) => ContestCombos(
-        normal: Normal.fromJson(json["normal"]),
-        contestCombosSuper: Normal.fromJson(json["super"]),
-      );
+  ContestCombos copyWith({
+    Normal? normal,
+    Normal? contestCombosSuper,
+  }) {
+    return ContestCombos(
+      normal: normal ?? this.normal,
+      contestCombosSuper: contestCombosSuper ?? this.contestCombosSuper,
+    );
+  }
 
-  Map<String, dynamic> toJson() => {
-        "normal": normal?.toJson(),
-        "super": contestCombosSuper?.toJson(),
-      };
+  factory ContestCombos.fromJson(Map<String, dynamic> json) {
+    return ContestCombos(
+      normal: json["normal"] == null ? null : Normal.fromJson(json["normal"]),
+      contestCombosSuper:
+          json["super"] == null ? null : Normal.fromJson(json["super"]),
+    );
+  }
 }
 
 class Normal {
   Normal({
-    this.useAfter,
-    this.useBefore,
+    required this.useBefore,
+    required this.useAfter,
   });
 
-  dynamic useAfter;
-  List<ContestType>? useBefore;
+  final List<ContestType>? useBefore;
+  final dynamic useAfter;
 
-  factory Normal.fromJson(Map<String, dynamic> json) => Normal(
-        useAfter: json["use_after"],
-        useBefore: json["use_before"] == null
-            ? null
-            : List<ContestType>.from(
-                json["use_before"].map((x) => ContestType.fromJson(x))),
-      );
+  Normal copyWith({
+    List<ContestType>? useBefore,
+    dynamic? useAfter,
+  }) {
+    return Normal(
+      useBefore: useBefore ?? this.useBefore,
+      useAfter: useAfter ?? this.useAfter,
+    );
+  }
 
-  Map<String, dynamic> toJson() => {
-        "use_after": useAfter,
-        "use_before": useBefore == null
-            ? null
-            : List<dynamic>.from(useBefore!.map((x) => x.toJson())),
-      };
+  factory Normal.fromJson(Map<String, dynamic> json) {
+    return Normal(
+      useBefore: json["use_before"] == null
+          ? null
+          : List<ContestType>.from(
+              json["use_before"].map((x) => ContestType.fromJson(x))),
+      useAfter: json["use_after"],
+    );
+  }
 }
 
 class ContestType {
   ContestType({
-    this.name,
-    this.url,
+    required this.name,
+    required this.url,
   });
 
-  String? name;
-  String? url;
+  final String? name;
+  final String? url;
 
-  factory ContestType.fromJson(Map<String, dynamic> json) => ContestType(
-        name: json["name"],
-        url: json["url"],
-      );
+  ContestType copyWith({
+    String? name,
+    String? url,
+  }) {
+    return ContestType(
+      name: name ?? this.name,
+      url: url ?? this.url,
+    );
+  }
 
-  Map<String, dynamic> toJson() => {
-        "name": name,
-        "url": url,
-      };
+  factory ContestType.fromJson(Map<String, dynamic> json) {
+    return ContestType(
+      name: json["name"] == null ? null : json["name"],
+      url: json["url"] == null ? null : json["url"],
+    );
+  }
 }
 
 class ContestEffect {
   ContestEffect({
-    this.url,
+    required this.url,
   });
 
-  String? url;
+  final String? url;
 
-  factory ContestEffect.fromJson(Map<String, dynamic> json) => ContestEffect(
-        url: json["url"],
-      );
+  ContestEffect copyWith({
+    String? url,
+  }) {
+    return ContestEffect(
+      url: url ?? this.url,
+    );
+  }
 
-  Map<String, dynamic> toJson() => {
-        "url": url,
-      };
+  factory ContestEffect.fromJson(Map<String, dynamic> json) {
+    return ContestEffect(
+      url: json["url"] == null ? null : json["url"],
+    );
+  }
 }
 
 class EffectEntry {
   EffectEntry({
-    this.effect,
-    this.language,
-    this.shortEffect,
+    required this.effect,
+    required this.shortEffect,
+    required this.language,
   });
 
-  String? effect;
-  ContestType? language;
-  String? shortEffect;
+  final String? effect;
+  final String? shortEffect;
+  final ContestType? language;
 
-  factory EffectEntry.fromJson(Map<String, dynamic> json) => EffectEntry(
-        effect: json["effect"],
-        language: ContestType.fromJson(json["language"]),
-        shortEffect: json["short_effect"],
-      );
+  EffectEntry copyWith({
+    String? effect,
+    String? shortEffect,
+    ContestType? language,
+  }) {
+    return EffectEntry(
+      effect: effect ?? this.effect,
+      shortEffect: shortEffect ?? this.shortEffect,
+      language: language ?? this.language,
+    );
+  }
 
-  Map<String, dynamic> toJson() => {
-        "effect": effect,
-        "language": language?.toJson(),
-        "short_effect": shortEffect,
-      };
+  factory EffectEntry.fromJson(Map<String, dynamic> json) {
+    return EffectEntry(
+      effect: json["effect"] == null ? null : json["effect"],
+      shortEffect: json["short_effect"] == null ? null : json["short_effect"],
+      language: json["language"] == null
+          ? null
+          : ContestType.fromJson(json["language"]),
+    );
+  }
 }
 
 class FlavorTextEntry {
   FlavorTextEntry({
-    this.flavorText,
-    this.language,
-    this.versionGroup,
+    required this.flavorText,
+    required this.language,
+    required this.versionGroup,
   });
 
-  String? flavorText;
-  ContestType? language;
-  ContestType? versionGroup;
+  final String? flavorText;
+  final ContestType? language;
+  final ContestType? versionGroup;
 
-  factory FlavorTextEntry.fromJson(Map<String, dynamic> json) =>
-      FlavorTextEntry(
-        flavorText: json["flavor_text"],
-        language: ContestType.fromJson(json["language"]),
-        versionGroup: ContestType.fromJson(json["version_group"]),
-      );
+  FlavorTextEntry copyWith({
+    String? flavorText,
+    ContestType? language,
+    ContestType? versionGroup,
+  }) {
+    return FlavorTextEntry(
+      flavorText: flavorText ?? this.flavorText,
+      language: language ?? this.language,
+      versionGroup: versionGroup ?? this.versionGroup,
+    );
+  }
 
-  Map<String, dynamic> toJson() => {
-        "flavor_text": flavorText,
-        "language": language?.toJson(),
-        "version_group": versionGroup?.toJson(),
-      };
+  factory FlavorTextEntry.fromJson(Map<String, dynamic> json) {
+    return FlavorTextEntry(
+      flavorText: json["flavor_text"] == null ? null : json["flavor_text"],
+      language: json["language"] == null
+          ? null
+          : ContestType.fromJson(json["language"]),
+      versionGroup: json["version_group"] == null
+          ? null
+          : ContestType.fromJson(json["version_group"]),
+    );
+  }
 }
 
 class Meta {
   Meta({
-    this.ailment,
-    this.ailmentChance,
-    this.category,
-    this.critRate,
-    this.drain,
-    this.flinchChance,
-    this.healing,
-    this.maxHits,
-    this.maxTurns,
-    this.minHits,
-    this.minTurns,
-    this.statChance,
+    required this.ailment,
+    required this.category,
+    required this.minHits,
+    required this.maxHits,
+    required this.minTurns,
+    required this.maxTurns,
+    required this.drain,
+    required this.healing,
+    required this.critRate,
+    required this.ailmentChance,
+    required this.flinchChance,
+    required this.statChance,
   });
 
-  ContestType? ailment;
-  int? ailmentChance;
-  ContestType? category;
-  int? critRate;
-  int? drain;
-  int? flinchChance;
-  int? healing;
-  dynamic maxHits;
-  dynamic maxTurns;
-  dynamic minHits;
-  dynamic minTurns;
-  int? statChance;
+  final ContestType? ailment;
+  final ContestType? category;
+  final dynamic minHits;
+  final dynamic maxHits;
+  final dynamic minTurns;
+  final dynamic maxTurns;
+  final int? drain;
+  final int? healing;
+  final int? critRate;
+  final int? ailmentChance;
+  final int? flinchChance;
+  final int? statChance;
 
-  factory Meta.fromJson(Map<String, dynamic> json) => Meta(
-        ailment: ContestType.fromJson(json["ailment"]),
-        ailmentChance: json["ailment_chance"],
-        category: ContestType.fromJson(json["category"]),
-        critRate: json["crit_rate"],
-        drain: json["drain"],
-        flinchChance: json["flinch_chance"],
-        healing: json["healing"],
-        maxHits: json["max_hits"],
-        maxTurns: json["max_turns"],
-        minHits: json["min_hits"],
-        minTurns: json["min_turns"],
-        statChance: json["stat_chance"],
-      );
+  Meta copyWith({
+    ContestType? ailment,
+    ContestType? category,
+    dynamic? minHits,
+    dynamic? maxHits,
+    dynamic? minTurns,
+    dynamic? maxTurns,
+    int? drain,
+    int? healing,
+    int? critRate,
+    int? ailmentChance,
+    int? flinchChance,
+    int? statChance,
+  }) {
+    return Meta(
+      ailment: ailment ?? this.ailment,
+      category: category ?? this.category,
+      minHits: minHits ?? this.minHits,
+      maxHits: maxHits ?? this.maxHits,
+      minTurns: minTurns ?? this.minTurns,
+      maxTurns: maxTurns ?? this.maxTurns,
+      drain: drain ?? this.drain,
+      healing: healing ?? this.healing,
+      critRate: critRate ?? this.critRate,
+      ailmentChance: ailmentChance ?? this.ailmentChance,
+      flinchChance: flinchChance ?? this.flinchChance,
+      statChance: statChance ?? this.statChance,
+    );
+  }
 
-  Map<String, dynamic> toJson() => {
-        "ailment": ailment?.toJson(),
-        "ailment_chance": ailmentChance,
-        "category": category?.toJson(),
-        "crit_rate": critRate,
-        "drain": drain,
-        "flinch_chance": flinchChance,
-        "healing": healing,
-        "max_hits": maxHits,
-        "max_turns": maxTurns,
-        "min_hits": minHits,
-        "min_turns": minTurns,
-        "stat_chance": statChance,
-      };
+  factory Meta.fromJson(Map<String, dynamic> json) {
+    return Meta(
+      ailment: json["ailment"] == null
+          ? null
+          : ContestType.fromJson(json["ailment"]),
+      category: json["category"] == null
+          ? null
+          : ContestType.fromJson(json["category"]),
+      minHits: json["min_hits"],
+      maxHits: json["max_hits"],
+      minTurns: json["min_turns"],
+      maxTurns: json["max_turns"],
+      drain: json["drain"] == null ? null : json["drain"],
+      healing: json["healing"] == null ? null : json["healing"],
+      critRate: json["crit_rate"] == null ? null : json["crit_rate"],
+      ailmentChance:
+          json["ailment_chance"] == null ? null : json["ailment_chance"],
+      flinchChance:
+          json["flinch_chance"] == null ? null : json["flinch_chance"],
+      statChance: json["stat_chance"] == null ? null : json["stat_chance"],
+    );
+  }
 }
 
 class Name {
   Name({
-    this.language,
-    this.name,
+    required this.name,
+    required this.language,
   });
 
-  ContestType? language;
-  String? name;
+  final String? name;
+  final ContestType? language;
 
-  factory Name.fromJson(Map<String, dynamic> json) => Name(
-        language: ContestType.fromJson(json["language"]),
-        name: json["name"],
-      );
+  Name copyWith({
+    String? name,
+    ContestType? language,
+  }) {
+    return Name(
+      name: name ?? this.name,
+      language: language ?? this.language,
+    );
+  }
 
-  Map<String, dynamic> toJson() => {
-        "language": language?.toJson(),
-        "name": name,
-      };
+  factory Name.fromJson(Map<String, dynamic> json) {
+    return Name(
+      name: json["name"] == null ? null : json["name"],
+      language: json["language"] == null
+          ? null
+          : ContestType.fromJson(json["language"]),
+    );
+  }
 }

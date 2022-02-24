@@ -1,269 +1,364 @@
-// To parse this JSON data, do
-//
-//     final itemModel = itemModelFromJson(jsonString);
-
-import 'dart:convert';
-
-ItemModel itemModelFromJson(String str) => ItemModel.fromJson(json.decode(str));
-
-String itemModelToJson(ItemModel data) => json.encode(data.toJson());
-
 class ItemModel {
   ItemModel({
-    this.id,
-    this.name,
-    this.cost,
-    this.flingPower,
-    this.flingEffect,
-    this.attributes,
-    this.category,
-    this.effectEntries,
-    this.flavorTextEntries,
-    this.gameIndices,
-    this.names,
-    this.sprites,
-    this.heldByPokemon,
-    this.babyTriggerFor,
+    required this.id,
+    required this.name,
+    required this.cost,
+    required this.flingPower,
+    required this.flingEffect,
+    required this.attributes,
+    required this.category,
+    required this.effectEntries,
+    required this.flavorTextEntries,
+    required this.gameIndices,
+    required this.names,
+    required this.sprites,
+    required this.heldByPokemon,
+    required this.babyTriggerFor,
   });
 
-  int? id;
-  String? name;
-  int? cost;
-  int? flingPower;
-  Category? flingEffect;
-  List<Category>? attributes;
-  Category? category;
-  List<EffectEntry>? effectEntries;
-  List<FlavorTextEntry>? flavorTextEntries;
-  List<GameIndex>? gameIndices;
-  List<Name>? names;
-  Sprites? sprites;
-  List<HeldByPokemon>? heldByPokemon;
-  BabyTriggerFor? babyTriggerFor;
+  final int id;
+  final String? name;
+  final int? cost;
+  final int? flingPower;
+  final Category? flingEffect;
+  final List<Category>? attributes;
+  final Category? category;
+  final List<EffectEntry>? effectEntries;
+  final List<FlavorTextEntry>? flavorTextEntries;
+  final List<GameIndex>? gameIndices;
+  final List<Name>? names;
+  final Sprites? sprites;
+  final List<HeldByPokemon>? heldByPokemon;
+  final BabyTriggerFor? babyTriggerFor;
 
-  factory ItemModel.fromJson(Map<String, dynamic> json) => ItemModel(
-        id: json["id"],
-        name: json["name"],
-        cost: json["cost"],
-        flingPower: json["fling_power"],
-        flingEffect: Category.fromJson(json["fling_effect"]),
-        attributes: List<Category>.from(
-            json["attributes"].map((x) => Category.fromJson(x))),
-        category: Category.fromJson(json["category"]),
-        effectEntries: List<EffectEntry>.from(
-            json["effect_entries"].map((x) => EffectEntry.fromJson(x))),
-        flavorTextEntries: List<FlavorTextEntry>.from(
-            json["flavor_text_entries"]
-                .map((x) => FlavorTextEntry.fromJson(x))),
-        gameIndices: List<GameIndex>.from(
-            json["game_indices"].map((x) => GameIndex.fromJson(x))),
-        names: List<Name>.from(json["names"].map((x) => Name.fromJson(x))),
-        sprites: Sprites.fromJson(json["sprites"]),
-        heldByPokemon: List<HeldByPokemon>.from(
-            json["held_by_pokemon"].map((x) => HeldByPokemon.fromJson(x))),
-        babyTriggerFor: BabyTriggerFor.fromJson(json["baby_trigger_for"]),
-      );
+  ItemModel copyWith({
+    int? id,
+    String? name,
+    int? cost,
+    int? flingPower,
+    Category? flingEffect,
+    List<Category>? attributes,
+    Category? category,
+    List<EffectEntry>? effectEntries,
+    List<FlavorTextEntry>? flavorTextEntries,
+    List<GameIndex>? gameIndices,
+    List<Name>? names,
+    Sprites? sprites,
+    List<HeldByPokemon>? heldByPokemon,
+    BabyTriggerFor? babyTriggerFor,
+  }) {
+    return ItemModel(
+      id: id ?? this.id,
+      name: name ?? this.name,
+      cost: cost ?? this.cost,
+      flingPower: flingPower ?? this.flingPower,
+      flingEffect: flingEffect ?? this.flingEffect,
+      attributes: attributes ?? this.attributes,
+      category: category ?? this.category,
+      effectEntries: effectEntries ?? this.effectEntries,
+      flavorTextEntries: flavorTextEntries ?? this.flavorTextEntries,
+      gameIndices: gameIndices ?? this.gameIndices,
+      names: names ?? this.names,
+      sprites: sprites ?? this.sprites,
+      heldByPokemon: heldByPokemon ?? this.heldByPokemon,
+      babyTriggerFor: babyTriggerFor ?? this.babyTriggerFor,
+    );
+  }
 
-  Map<String, dynamic> toJson() => {
-        "id": id,
-        "name": name,
-        "cost": cost,
-        "fling_power": flingPower,
-        "fling_effect": flingEffect?.toJson(),
-        "attributes": List<dynamic>.from(attributes!.map((x) => x.toJson())),
-        "category": category?.toJson(),
-        "effect_entries":
-            List<dynamic>.from(effectEntries!.map((x) => x.toJson())),
-        "flavor_text_entries":
-            List<dynamic>.from(flavorTextEntries!.map((x) => x.toJson())),
-        "game_indices": List<dynamic>.from(gameIndices!.map((x) => x.toJson())),
-        "names": List<dynamic>.from(names!.map((x) => x.toJson())),
-        "sprites": sprites?.toJson(),
-        "held_by_pokemon":
-            List<dynamic>.from(heldByPokemon!.map((x) => x.toJson())),
-        "baby_trigger_for": babyTriggerFor?.toJson(),
-      };
+  factory ItemModel.fromJson(Map<String, dynamic> json) {
+    return ItemModel(
+      id: json["id"] == null ? null : json["id"],
+      name: json["name"] == null ? null : json["name"],
+      cost: json["cost"] == null ? null : json["cost"],
+      flingPower: json["fling_power"] == null ? null : json["fling_power"],
+      flingEffect: json["fling_effect"] == null
+          ? null
+          : Category.fromJson(json["fling_effect"]),
+      attributes: json["attributes"] == null
+          ? null
+          : List<Category>.from(
+              json["attributes"].map((x) => Category.fromJson(x))),
+      category:
+          json["category"] == null ? null : Category.fromJson(json["category"]),
+      effectEntries: json["effect_entries"] == null
+          ? null
+          : List<EffectEntry>.from(
+              json["effect_entries"].map((x) => EffectEntry.fromJson(x))),
+      flavorTextEntries: json["flavor_text_entries"] == null
+          ? null
+          : List<FlavorTextEntry>.from(json["flavor_text_entries"]
+              .map((x) => FlavorTextEntry.fromJson(x))),
+      gameIndices: json["game_indices"] == null
+          ? null
+          : List<GameIndex>.from(
+              json["game_indices"].map((x) => GameIndex.fromJson(x))),
+      names: json["names"] == null
+          ? null
+          : List<Name>.from(json["names"].map((x) => Name.fromJson(x))),
+      sprites:
+          json["sprites"] == null ? null : Sprites.fromJson(json["sprites"]),
+      heldByPokemon: json["held_by_pokemon"] == null
+          ? null
+          : List<HeldByPokemon>.from(
+              json["held_by_pokemon"].map((x) => HeldByPokemon.fromJson(x))),
+      babyTriggerFor: json["baby_trigger_for"] == null
+          ? null
+          : BabyTriggerFor.fromJson(json["baby_trigger_for"]),
+    );
+  }
 }
 
 class Category {
   Category({
-    this.name,
-    this.url,
+    required this.name,
+    required this.url,
   });
 
-  String? name;
-  String? url;
+  final String? name;
+  final String? url;
 
-  factory Category.fromJson(Map<String, dynamic> json) => Category(
-        name: json["name"] as String? ?? "",
-        url: json["url"] as String? ?? "",
-      );
+  Category copyWith({
+    String? name,
+    String? url,
+  }) {
+    return Category(
+      name: name ?? this.name,
+      url: url ?? this.url,
+    );
+  }
 
-  Map<String, dynamic> toJson() => {
-        "name": name,
-        "url": url,
-      };
+  factory Category.fromJson(Map<String, dynamic> json) {
+    return Category(
+      name: json["name"] == null ? null : json["name"],
+      url: json["url"] == null ? null : json["url"],
+    );
+  }
 }
 
 class BabyTriggerFor {
   BabyTriggerFor({
-    this.url,
+    required this.url,
   });
 
-  String? url;
+  final String? url;
 
-  factory BabyTriggerFor.fromJson(Map<String, dynamic> json) => BabyTriggerFor(
-        url: json["url"],
-      );
+  BabyTriggerFor copyWith({
+    String? url,
+  }) {
+    return BabyTriggerFor(
+      url: url ?? this.url,
+    );
+  }
 
-  Map<String, dynamic> toJson() => {
-        "url": url,
-      };
+  factory BabyTriggerFor.fromJson(Map<String, dynamic> json) {
+    return BabyTriggerFor(
+      url: json["url"] == null ? null : json["url"],
+    );
+  }
 }
 
 class EffectEntry {
   EffectEntry({
-    this.effect,
-    this.shortEffect,
-    this.language,
+    required this.effect,
+    required this.shortEffect,
+    required this.language,
   });
 
-  String? effect;
-  String? shortEffect;
-  Category? language;
+  final String? effect;
+  final String? shortEffect;
+  final Category? language;
 
-  factory EffectEntry.fromJson(Map<String, dynamic> json) => EffectEntry(
-        effect: json["effect"],
-        shortEffect: json["short_effect"],
-        language: Category.fromJson(json["language"]),
-      );
+  EffectEntry copyWith({
+    String? effect,
+    String? shortEffect,
+    Category? language,
+  }) {
+    return EffectEntry(
+      effect: effect ?? this.effect,
+      shortEffect: shortEffect ?? this.shortEffect,
+      language: language ?? this.language,
+    );
+  }
 
-  Map<String, dynamic> toJson() => {
-        "effect": effect,
-        "short_effect": shortEffect,
-        "language": language?.toJson(),
-      };
+  factory EffectEntry.fromJson(Map<String, dynamic> json) {
+    return EffectEntry(
+      effect: json["effect"] == null ? null : json["effect"],
+      shortEffect: json["short_effect"] == null ? null : json["short_effect"],
+      language:
+          json["language"] == null ? null : Category.fromJson(json["language"]),
+    );
+  }
 }
 
 class FlavorTextEntry {
   FlavorTextEntry({
-    this.text,
-    this.versionGroup,
-    this.language,
+    required this.text,
+    required this.versionGroup,
+    required this.language,
   });
 
-  String? text;
-  Category? versionGroup;
-  Category? language;
+  final String? text;
+  final Category? versionGroup;
+  final Category? language;
 
-  factory FlavorTextEntry.fromJson(Map<String, dynamic> json) =>
-      FlavorTextEntry(
-        text: json["text"],
-        versionGroup: Category.fromJson(json["version_group"]),
-        language: Category.fromJson(json["language"]),
-      );
+  FlavorTextEntry copyWith({
+    String? text,
+    Category? versionGroup,
+    Category? language,
+  }) {
+    return FlavorTextEntry(
+      text: text ?? this.text,
+      versionGroup: versionGroup ?? this.versionGroup,
+      language: language ?? this.language,
+    );
+  }
 
-  Map<String, dynamic> toJson() => {
-        "text": text,
-        "version_group": versionGroup?.toJson(),
-        "language": language?.toJson(),
-      };
+  factory FlavorTextEntry.fromJson(Map<String, dynamic> json) {
+    return FlavorTextEntry(
+      text: json["text"] == null ? null : json["text"],
+      versionGroup: json["version_group"] == null
+          ? null
+          : Category.fromJson(json["version_group"]),
+      language:
+          json["language"] == null ? null : Category.fromJson(json["language"]),
+    );
+  }
 }
 
 class GameIndex {
   GameIndex({
-    this.gameIndex,
-    this.generation,
+    required this.gameIndex,
+    required this.generation,
   });
 
-  int? gameIndex;
-  Category? generation;
+  final int? gameIndex;
+  final Category? generation;
 
-  factory GameIndex.fromJson(Map<String, dynamic> json) => GameIndex(
-        gameIndex: json["game_index"],
-        generation: Category.fromJson(json["generation"]),
-      );
+  GameIndex copyWith({
+    int? gameIndex,
+    Category? generation,
+  }) {
+    return GameIndex(
+      gameIndex: gameIndex ?? this.gameIndex,
+      generation: generation ?? this.generation,
+    );
+  }
 
-  Map<String, dynamic> toJson() => {
-        "game_index": gameIndex,
-        "generation": generation?.toJson(),
-      };
+  factory GameIndex.fromJson(Map<String, dynamic> json) {
+    return GameIndex(
+      gameIndex: json["game_index"] == null ? null : json["game_index"],
+      generation: json["generation"] == null
+          ? null
+          : Category.fromJson(json["generation"]),
+    );
+  }
 }
 
 class HeldByPokemon {
   HeldByPokemon({
-    this.pokemon,
-    this.versionDetails,
+    required this.pokemon,
+    required this.versionDetails,
   });
 
-  Category? pokemon;
-  List<VersionDetail>? versionDetails;
+  final Category? pokemon;
+  final List<VersionDetail>? versionDetails;
 
-  factory HeldByPokemon.fromJson(Map<String, dynamic> json) => HeldByPokemon(
-        pokemon: Category.fromJson(json["pokemon"]),
-        versionDetails: List<VersionDetail>.from(
-            json["version_details"].map((x) => VersionDetail.fromJson(x))),
-      );
+  HeldByPokemon copyWith({
+    Category? pokemon,
+    List<VersionDetail>? versionDetails,
+  }) {
+    return HeldByPokemon(
+      pokemon: pokemon ?? this.pokemon,
+      versionDetails: versionDetails ?? this.versionDetails,
+    );
+  }
 
-  Map<String, dynamic> toJson() => {
-        "pokemon": pokemon?.toJson(),
-        "version_details":
-            List<dynamic>.from(versionDetails!.map((x) => x.toJson())),
-      };
+  factory HeldByPokemon.fromJson(Map<String, dynamic> json) {
+    return HeldByPokemon(
+      pokemon:
+          json["pokemon"] == null ? null : Category.fromJson(json["pokemon"]),
+      versionDetails: json["version_details"] == null
+          ? null
+          : List<VersionDetail>.from(
+              json["version_details"].map((x) => VersionDetail.fromJson(x))),
+    );
+  }
 }
 
 class VersionDetail {
   VersionDetail({
-    this.rarity,
-    this.version,
+    required this.rarity,
+    required this.version,
   });
 
-  int? rarity;
-  Category? version;
+  final int? rarity;
+  final Category? version;
 
-  factory VersionDetail.fromJson(Map<String, dynamic> json) => VersionDetail(
-        rarity: json["rarity"],
-        version: Category.fromJson(json["version"]),
-      );
+  VersionDetail copyWith({
+    int? rarity,
+    Category? version,
+  }) {
+    return VersionDetail(
+      rarity: rarity ?? this.rarity,
+      version: version ?? this.version,
+    );
+  }
 
-  Map<String, dynamic> toJson() => {
-        "rarity": rarity,
-        "version": version?.toJson(),
-      };
+  factory VersionDetail.fromJson(Map<String, dynamic> json) {
+    return VersionDetail(
+      rarity: json["rarity"] == null ? null : json["rarity"],
+      version:
+          json["version"] == null ? null : Category.fromJson(json["version"]),
+    );
+  }
 }
 
 class Name {
   Name({
-    this.name,
-    this.language,
+    required this.name,
+    required this.language,
   });
 
-  String? name;
-  Category? language;
+  final String? name;
+  final Category? language;
 
-  factory Name.fromJson(Map<String, dynamic> json) => Name(
-        name: json["name"],
-        language: Category.fromJson(json["language"]),
-      );
+  Name copyWith({
+    String? name,
+    Category? language,
+  }) {
+    return Name(
+      name: name ?? this.name,
+      language: language ?? this.language,
+    );
+  }
 
-  Map<String, dynamic> toJson() => {
-        "name": name,
-        "language": language?.toJson(),
-      };
+  factory Name.fromJson(Map<String, dynamic> json) {
+    return Name(
+      name: json["name"] == null ? null : json["name"],
+      language:
+          json["language"] == null ? null : Category.fromJson(json["language"]),
+    );
+  }
 }
 
 class Sprites {
   Sprites({
-    this.spritesDefault,
+    required this.spritesDefault,
   });
 
-  String? spritesDefault;
+  final String? spritesDefault;
 
-  factory Sprites.fromJson(Map<String, dynamic> json) => Sprites(
-        spritesDefault: json["default"],
-      );
+  Sprites copyWith({
+    String? spritesDefault,
+  }) {
+    return Sprites(
+      spritesDefault: spritesDefault ?? this.spritesDefault,
+    );
+  }
 
-  Map<String, dynamic> toJson() => {
-        "default": spritesDefault,
-      };
+  factory Sprites.fromJson(Map<String, dynamic> json) {
+    return Sprites(
+      spritesDefault: json["default"] == null ? null : json["default"],
+    );
+  }
 }

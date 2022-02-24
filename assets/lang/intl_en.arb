@@ -44,5 +44,14 @@
     "effect_entries": "Effect Entries",
     "learned_by_pokemon": "Learned by Pokemon",
     "target": "Target",
-    "type": "Type"
+    "type": "Type",
+    "noPokemonsFound": "No Pokémon found",
+    "noBerriesFound": "No Berries found",
+    "height": "Height",
+    "weight": "Weight",
+    "species": "Species",
+    "stats": "Stats",
+    "doesntcarryitems": "Doesn't carry any items",
+    "cost": "Cost",
+    "evolutions": "Evolutions"
 }

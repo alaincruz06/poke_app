@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.poke_app">
    <application
-        android:label="poke_app"
+        android:label="PokéDex"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

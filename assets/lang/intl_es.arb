@@ -44,5 +44,14 @@
     "effect_entries": "Efectos",
     "learned_by_pokemon": "Aprendido por Pokemon",
     "target": "Objetivo",
-    "type": "Tipo"
+    "type": "Tipo",
+    "noPokemonsFound": "No se encontraron Pokémons",
+    "noBerriesFound": "No se encontraron Bayas",
+    "height": "Altura",
+    "weight": "Peso",
+    "species": "Especie",
+    "stats": "Estadísticas",
+    "doesntcarryitems": "No lleva objetos encima",
+    "cost": "Coste",
+    "evolutions": "Evoluciones"
 }

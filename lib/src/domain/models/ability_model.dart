@@ -1,209 +1,297 @@
-// To parse this JSON data, do
-//
-//     final abilityModel = abilityModelFromJson(jsonString);
-
-import 'dart:convert';
-
-AbilityModel abilityModelFromJson(String str) => AbilityModel.fromJson(json.decode(str));
-
-String abilityModelToJson(AbilityModel data) => json.encode(data.toJson());
-
 class AbilityModel {
-    AbilityModel({
-        this.id,
-        this.name,
-        this.isMainSeries,
-        this.generation,
-        this.names,
-        this.effectEntries,
-        this.effectChanges,
-        this.flavorTextEntries,
-        this.pokemon,
-    });
+  AbilityModel({
+    required this.id,
+    required this.name,
+    required this.isMainSeries,
+    required this.generation,
+    required this.names,
+    required this.effectEntries,
+    required this.effectChanges,
+    required this.flavorTextEntries,
+    required this.pokemon,
+  });
 
-    int? id;
-    String? name;
-    bool? isMainSeries;
-    Generation? generation;
-    List<Name>? names;
-    List<AbilityModelEffectEntry>? effectEntries;
-    List<EffectChange>? effectChanges;
-    List<FlavorTextEntry>? flavorTextEntries;
-    List<Pokemon>? pokemon;
+  final int id;
+  final String? name;
+  final bool? isMainSeries;
+  final Generation? generation;
+  final List<Name>? names;
+  final List<AbilityModelEffectEntry>? effectEntries;
+  final List<EffectChange>? effectChanges;
+  final List<FlavorTextEntry>? flavorTextEntries;
+  final List<Pokemon>? pokemon;
 
-    factory AbilityModel.fromJson(Map<String, dynamic> json) => AbilityModel(
-        id: json["id"],
-        name: json["name"],
-        isMainSeries: json["is_main_series"],
-        generation: Generation.fromJson(json["generation"]),
-        names: List<Name>.from(json["names"].map((x) => Name.fromJson(x))),
-        effectEntries: List<AbilityModelEffectEntry>.from(json["effect_entries"].map((x) => AbilityModelEffectEntry.fromJson(x))),
-        effectChanges: List<EffectChange>.from(json["effect_changes"].map((x) => EffectChange.fromJson(x))),
-        flavorTextEntries: List<FlavorTextEntry>.from(json["flavor_text_entries"].map((x) => FlavorTextEntry.fromJson(x))),
-        pokemon: List<Pokemon>.from(json["pokemon"].map((x) => Pokemon.fromJson(x))),
+  AbilityModel copyWith({
+    int? id,
+    String? name,
+    bool? isMainSeries,
+    Generation? generation,
+    List<Name>? names,
+    List<AbilityModelEffectEntry>? effectEntries,
+    List<EffectChange>? effectChanges,
+    List<FlavorTextEntry>? flavorTextEntries,
+    List<Pokemon>? pokemon,
+  }) {
+    return AbilityModel(
+      id: id ?? this.id,
+      name: name ?? this.name,
+      isMainSeries: isMainSeries ?? this.isMainSeries,
+      generation: generation ?? this.generation,
+      names: names ?? this.names,
+      effectEntries: effectEntries ?? this.effectEntries,
+      effectChanges: effectChanges ?? this.effectChanges,
+      flavorTextEntries: flavorTextEntries ?? this.flavorTextEntries,
+      pokemon: pokemon ?? this.pokemon,
     );
+  }
 
-    Map<String, dynamic> toJson() => {
-        "id": id,
-        "name": name,
-        "is_main_series": isMainSeries,
-        "generation": generation?.toJson(),
-        "names": List<dynamic>.from(names!.map((x) => x.toJson())),
-        "effect_entries": List<dynamic>.from(effectEntries!.map((x) => x.toJson())),
-        "effect_changes": List<dynamic>.from(effectChanges!.map((x) => x.toJson())),
-        "flavor_text_entries": List<dynamic>.from(flavorTextEntries!.map((x) => x.toJson())),
-        "pokemon": List<dynamic>.from(pokemon!.map((x) => x.toJson())),
-    };
+  factory AbilityModel.fromJson(Map<String, dynamic> json) {
+    return AbilityModel(
+      id: json["id"] == null ? null : json["id"],
+      name: json["name"] == null ? null : json["name"],
+      isMainSeries:
+          json["is_main_series"] == null ? null : json["is_main_series"],
+      generation: json["generation"] == null
+          ? null
+          : Generation.fromJson(json["generation"]),
+      names: json["names"] == null
+          ? null
+          : List<Name>.from(json["names"].map((x) => Name.fromJson(x))),
+      effectEntries: json["effect_entries"] == null
+          ? null
+          : List<AbilityModelEffectEntry>.from(json["effect_entries"]
+              .map((x) => AbilityModelEffectEntry.fromJson(x))),
+      effectChanges: json["effect_changes"] == null
+          ? null
+          : List<EffectChange>.from(
+              json["effect_changes"].map((x) => EffectChange.fromJson(x))),
+      flavorTextEntries: json["flavor_text_entries"] == null
+          ? null
+          : List<FlavorTextEntry>.from(json["flavor_text_entries"]
+              .map((x) => FlavorTextEntry.fromJson(x))),
+      pokemon: json["pokemon"] == null
+          ? null
+          : List<Pokemon>.from(json["pokemon"].map((x) => Pokemon.fromJson(x))),
+    );
+  }
 }
 
 class EffectChange {
-    EffectChange({
-        this.versionGroup,
-        this.effectEntries,
-    });
+  EffectChange({
+    required this.versionGroup,
+    required this.effectEntries,
+  });
 
-    Generation? versionGroup;
-    List<EffectChangeEffectEntry>? effectEntries;
+  final Generation? versionGroup;
+  final List<EffectChangeEffectEntry>? effectEntries;
 
-    factory EffectChange.fromJson(Map<String, dynamic> json) => EffectChange(
-        versionGroup: Generation.fromJson(json["version_group"]),
-        effectEntries: List<EffectChangeEffectEntry>.from(json["effect_entries"].map((x) => EffectChangeEffectEntry.fromJson(x))),
+  EffectChange copyWith({
+    Generation? versionGroup,
+    List<EffectChangeEffectEntry>? effectEntries,
+  }) {
+    return EffectChange(
+      versionGroup: versionGroup ?? this.versionGroup,
+      effectEntries: effectEntries ?? this.effectEntries,
     );
+  }
 
-    Map<String, dynamic> toJson() => {
-        "version_group": versionGroup?.toJson(),
-        "effect_entries": List<dynamic>.from(effectEntries!.map((x) => x.toJson())),
-    };
+  factory EffectChange.fromJson(Map<String, dynamic> json) {
+    return EffectChange(
+      versionGroup: json["version_group"] == null
+          ? null
+          : Generation.fromJson(json["version_group"]),
+      effectEntries: json["effect_entries"] == null
+          ? null
+          : List<EffectChangeEffectEntry>.from(json["effect_entries"]
+              .map((x) => EffectChangeEffectEntry.fromJson(x))),
+    );
+  }
 }
 
 class EffectChangeEffectEntry {
-    EffectChangeEffectEntry({
-        this.effect,
-        this.language,
-    });
+  EffectChangeEffectEntry({
+    required this.effect,
+    required this.language,
+  });
 
-    String? effect;
-    Generation? language;
+  final String? effect;
+  final Generation? language;
 
-    factory EffectChangeEffectEntry.fromJson(Map<String, dynamic> json) => EffectChangeEffectEntry(
-        effect: json["effect"],
-        language: Generation.fromJson(json["language"]),
+  EffectChangeEffectEntry copyWith({
+    String? effect,
+    Generation? language,
+  }) {
+    return EffectChangeEffectEntry(
+      effect: effect ?? this.effect,
+      language: language ?? this.language,
     );
+  }
 
-    Map<String, dynamic> toJson() => {
-        "effect": effect,
-        "language": language?.toJson(),
-    };
+  factory EffectChangeEffectEntry.fromJson(Map<String, dynamic> json) {
+    return EffectChangeEffectEntry(
+      effect: json["effect"] == null ? null : json["effect"],
+      language: json["language"] == null
+          ? null
+          : Generation.fromJson(json["language"]),
+    );
+  }
 }
 
 class Generation {
-    Generation({
-        this.name,
-        this.url,
-    });
+  Generation({
+    required this.name,
+    required this.url,
+  });
 
-    String? name;
-    String? url;
+  final String? name;
+  final String? url;
 
-    factory Generation.fromJson(Map<String, dynamic> json) => Generation(
-        name: json["name"],
-        url: json["url"],
+  Generation copyWith({
+    String? name,
+    String? url,
+  }) {
+    return Generation(
+      name: name ?? this.name,
+      url: url ?? this.url,
     );
+  }
 
-    Map<String, dynamic> toJson() => {
-        "name": name,
-        "url": url,
-    };
+  factory Generation.fromJson(Map<String, dynamic> json) {
+    return Generation(
+      name: json["name"] == null ? null : json["name"],
+      url: json["url"] == null ? null : json["url"],
+    );
+  }
 }
 
 class AbilityModelEffectEntry {
-    AbilityModelEffectEntry({
-        this.effect,
-        this.shortEffect,
-        this.language,
-    });
+  AbilityModelEffectEntry({
+    required this.effect,
+    required this.shortEffect,
+    required this.language,
+  });
 
-    String? effect;
-    String? shortEffect;
-    Generation? language;
+  final String? effect;
+  final String? shortEffect;
+  final Generation? language;
 
-    factory AbilityModelEffectEntry.fromJson(Map<String, dynamic> json) => AbilityModelEffectEntry(
-        effect: json["effect"],
-        shortEffect: json["short_effect"],
-        language: Generation.fromJson(json["language"]),
+  AbilityModelEffectEntry copyWith({
+    String? effect,
+    String? shortEffect,
+    Generation? language,
+  }) {
+    return AbilityModelEffectEntry(
+      effect: effect ?? this.effect,
+      shortEffect: shortEffect ?? this.shortEffect,
+      language: language ?? this.language,
     );
+  }
 
-    Map<String, dynamic> toJson() => {
-        "effect": effect,
-        "short_effect": shortEffect,
-        "language": language?.toJson(),
-    };
+  factory AbilityModelEffectEntry.fromJson(Map<String, dynamic> json) {
+    return AbilityModelEffectEntry(
+      effect: json["effect"] == null ? null : json["effect"],
+      shortEffect: json["short_effect"] == null ? null : json["short_effect"],
+      language: json["language"] == null
+          ? null
+          : Generation.fromJson(json["language"]),
+    );
+  }
 }
 
 class FlavorTextEntry {
-    FlavorTextEntry({
-        this.flavorText,
-        this.language,
-        this.versionGroup,
-    });
+  FlavorTextEntry({
+    required this.flavorText,
+    required this.language,
+    required this.versionGroup,
+  });
 
-    String? flavorText;
-    Generation? language;
-    Generation? versionGroup;
+  final String? flavorText;
+  final Generation? language;
+  final Generation? versionGroup;
 
-    factory FlavorTextEntry.fromJson(Map<String, dynamic> json) => FlavorTextEntry(
-        flavorText: json["flavor_text"],
-        language: Generation.fromJson(json["language"]),
-        versionGroup: Generation.fromJson(json["version_group"]),
+  FlavorTextEntry copyWith({
+    String? flavorText,
+    Generation? language,
+    Generation? versionGroup,
+  }) {
+    return FlavorTextEntry(
+      flavorText: flavorText ?? this.flavorText,
+      language: language ?? this.language,
+      versionGroup: versionGroup ?? this.versionGroup,
     );
+  }
 
-    Map<String, dynamic> toJson() => {
-        "flavor_text": flavorText,
-        "language": language?.toJson(),
-        "version_group": versionGroup?.toJson(),
-    };
+  factory FlavorTextEntry.fromJson(Map<String, dynamic> json) {
+    return FlavorTextEntry(
+      flavorText: json["flavor_text"] == null ? null : json["flavor_text"],
+      language: json["language"] == null
+          ? null
+          : Generation.fromJson(json["language"]),
+      versionGroup: json["version_group"] == null
+          ? null
+          : Generation.fromJson(json["version_group"]),
+    );
+  }
 }
 
 class Name {
-    Name({
-        this.name,
-        this.language,
-    });
+  Name({
+    required this.name,
+    required this.language,
+  });
 
-    String? name;
-    Generation? language;
+  final String? name;
+  final Generation? language;
 
-    factory Name.fromJson(Map<String, dynamic> json) => Name(
-        name: json["name"],
-        language: Generation.fromJson(json["language"]),
+  Name copyWith({
+    String? name,
+    Generation? language,
+  }) {
+    return Name(
+      name: name ?? this.name,
+      language: language ?? this.language,
     );
+  }
 
-    Map<String, dynamic> toJson() => {
-        "name": name,
-        "language": language?.toJson(),
-    };
+  factory Name.fromJson(Map<String, dynamic> json) {
+    return Name(
+      name: json["name"] == null ? null : json["name"],
+      language: json["language"] == null
+          ? null
+          : Generation.fromJson(json["language"]),
+    );
+  }
 }
 
 class Pokemon {
-    Pokemon({
-        this.isHidden,
-        this.slot,
-        this.pokemon,
-    });
+  Pokemon({
+    required this.isHidden,
+    required this.slot,
+    required this.pokemon,
+  });
 
-    bool? isHidden;
-    int? slot;
-    Generation? pokemon;
+  final bool? isHidden;
+  final int? slot;
+  final Generation? pokemon;
 
-    factory Pokemon.fromJson(Map<String, dynamic> json) => Pokemon(
-        isHidden: json["is_hidden"],
-        slot: json["slot"],
-        pokemon: Generation.fromJson(json["pokemon"]),
+  Pokemon copyWith({
+    bool? isHidden,
+    int? slot,
+    Generation? pokemon,
+  }) {
+    return Pokemon(
+      isHidden: isHidden ?? this.isHidden,
+      slot: slot ?? this.slot,
+      pokemon: pokemon ?? this.pokemon,
     );
+  }
 
-    Map<String, dynamic> toJson() => {
-        "is_hidden": isHidden,
-        "slot": slot,
-        "pokemon": pokemon?.toJson(),
-    };
+  factory Pokemon.fromJson(Map<String, dynamic> json) {
+    return Pokemon(
+      isHidden: json["is_hidden"] == null ? null : json["is_hidden"],
+      slot: json["slot"] == null ? null : json["slot"],
+      pokemon:
+          json["pokemon"] == null ? null : Generation.fromJson(json["pokemon"]),
+    );
+  }
 }

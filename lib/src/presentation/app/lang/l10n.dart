@@ -509,6 +509,96 @@ class S {
       args: [],
     );
   }
+
+  /// `No Pokémon found`
+  String get noPokemonsFound {
+    return Intl.message(
+      'No Pokémon found',
+      name: 'noPokemonsFound',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No Berries found`
+  String get noBerriesFound {
+    return Intl.message(
+      'No Berries found',
+      name: 'noBerriesFound',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Height`
+  String get height {
+    return Intl.message(
+      'Height',
+      name: 'height',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Weight`
+  String get weight {
+    return Intl.message(
+      'Weight',
+      name: 'weight',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Species`
+  String get species {
+    return Intl.message(
+      'Species',
+      name: 'species',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Stats`
+  String get stats {
+    return Intl.message(
+      'Stats',
+      name: 'stats',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Doesn't carry any items`
+  String get doesntcarryitems {
+    return Intl.message(
+      'Doesn\'t carry any items',
+      name: 'doesntcarryitems',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cost`
+  String get cost {
+    return Intl.message(
+      'Cost',
+      name: 'cost',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Evolutions`
+  String get evolutions {
+    return Intl.message(
+      'Evolutions',
+      name: 'evolutions',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

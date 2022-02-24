@@ -6,28 +6,30 @@ import 'package:poke_app/src/presentation/pages/pokemon_details_page/pokemon_det
 import 'package:poke_app/src/presentation/widgets/loading_widget.dart';
 
 Widget pokemonContainer(
-    BuildContext context,
-    String name,
-  ) {
-    return InkWell(
-      onTap: () async{
-    PokemonModel pokemonModel = await PokemonProvider().getPokemonByIdOrName(name);
-      int  pokemonID = pokemonModel.id!; 
-           final route =
-                    MaterialPageRoute(builder: (context) => PokemonDetailsPage(pokemonName: name, pokemonID: pokemonID));
-              
-                Navigator.push(context, route);  
-      },
-      child: Container(
-        margin: const EdgeInsets.all(15.0),
-        decoration: BoxDecoration(
-          color: Theme.of(context).cardColor,
-          borderRadius: BorderRadius.circular(20.0),
-        ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-             /*  Expanded(
+  BuildContext context,
+  String name,
+) {
+  return InkWell(
+    onTap: () async {
+      PokemonModel pokemonModel =
+          await PokemonProvider().getPokemonByIdOrName(name);
+      int pokemonID = pokemonModel.id;
+      final route = MaterialPageRoute(
+          builder: (context) =>
+              PokemonDetailsPage(pokemonName: name, pokemonID: pokemonID));
+
+      Navigator.push(context, route);
+    },
+    child: Container(
+      margin: const EdgeInsets.all(15.0),
+      decoration: BoxDecoration(
+        color: Theme.of(context).cardColor,
+        borderRadius: BorderRadius.circular(20.0),
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          /*  Expanded(
               flex: 3,
               child: FutureBuilder(
                       future: PokemonProvider().getPokemonByIdOrName(name),
@@ -45,15 +47,15 @@ Widget pokemonContainer(
                },
              ),
             ),   */
-            Expanded(
-              child: Text(
-                name.capitalize(),
-                style: Theme.of(context).textTheme.bodyText1,
-              ),
+          Expanded(
+            child: Text(
+              name.capitalize(),
+              style: Theme.of(context).textTheme.bodyText1,
             ),
-            const SizedBox(height: 5.0)
-          ],
-        ),
+          ),
+          const SizedBox(height: 5.0)
+        ],
       ),
-    );
-  }
+    ),
+  );
+}

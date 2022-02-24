@@ -31,7 +31,10 @@ class MessageLookup extends MessageLookupByLibrary {
             "Esta aplicación fue hecha gracias a PokeApi"),
         "berries": MessageLookupByLibrary.simpleMessage("Bayas"),
         "category": MessageLookupByLibrary.simpleMessage("Categoría"),
+        "cost": MessageLookupByLibrary.simpleMessage("Coste"),
         "damage_class": MessageLookupByLibrary.simpleMessage("Tipo de daño"),
+        "doesntcarryitems":
+            MessageLookupByLibrary.simpleMessage("No lleva objetos encima"),
         "effect_chance":
             MessageLookupByLibrary.simpleMessage("Probabilidad de Efecto"),
         "effect_entries": MessageLookupByLibrary.simpleMessage("Efectos"),
@@ -40,8 +43,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Efecto (Resumido)"),
         "evolutionChains":
             MessageLookupByLibrary.simpleMessage("Cadenas de Evolución"),
+        "evolutions": MessageLookupByLibrary.simpleMessage("Evoluciones"),
         "generation": MessageLookupByLibrary.simpleMessage("Generación"),
         "generations": MessageLookupByLibrary.simpleMessage("Generaciones"),
+        "height": MessageLookupByLibrary.simpleMessage("Altura"),
         "held_items": MessageLookupByLibrary.simpleMessage("Objetos encima"),
         "id_name": MessageLookupByLibrary.simpleMessage("id/nombre"),
         "is_main_series":
@@ -58,6 +63,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "moves_mos": MessageLookupByLibrary.simpleMessage("Movimientos (MOs)"),
         "name": MessageLookupByLibrary.simpleMessage("Nombre"),
         "no": MessageLookupByLibrary.simpleMessage("No"),
+        "noBerriesFound":
+            MessageLookupByLibrary.simpleMessage("No se encontraron Bayas"),
+        "noPokemonsFound":
+            MessageLookupByLibrary.simpleMessage("No se encontraron Pokémons"),
         "pokedexes": MessageLookupByLibrary.simpleMessage("Pokedexes"),
         "pokemons": MessageLookupByLibrary.simpleMessage("Pokémons"),
         "pokesAmount":
@@ -70,10 +79,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "selectALanguage":
             MessageLookupByLibrary.simpleMessage("Selecciona un lenguaje"),
         "settings": MessageLookupByLibrary.simpleMessage("Ajustes"),
+        "species": MessageLookupByLibrary.simpleMessage("Especie"),
+        "stats": MessageLookupByLibrary.simpleMessage("Estadísticas"),
         "target": MessageLookupByLibrary.simpleMessage("Objetivo"),
         "theme": MessageLookupByLibrary.simpleMessage("Tema"),
         "type": MessageLookupByLibrary.simpleMessage("Tipo"),
         "versions": MessageLookupByLibrary.simpleMessage("Versiones"),
+        "weight": MessageLookupByLibrary.simpleMessage("Peso"),
         "yes": MessageLookupByLibrary.simpleMessage("Si")
       };
 }

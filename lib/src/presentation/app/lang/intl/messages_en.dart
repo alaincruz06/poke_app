@@ -33,7 +33,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "category": MessageLookupByLibrary.simpleMessage("Category"),
         "contestCategories":
             MessageLookupByLibrary.simpleMessage("Contest Categories"),
+        "cost": MessageLookupByLibrary.simpleMessage("Cost"),
         "damage_class": MessageLookupByLibrary.simpleMessage("Damage Class"),
+        "doesntcarryitems":
+            MessageLookupByLibrary.simpleMessage("Doesn\'t carry any items"),
         "effect_chance": MessageLookupByLibrary.simpleMessage("Effect Chance"),
         "effect_entries":
             MessageLookupByLibrary.simpleMessage("Effect Entries"),
@@ -43,8 +46,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Encounter Methods"),
         "evolutionChains":
             MessageLookupByLibrary.simpleMessage("Evolution Chains"),
+        "evolutions": MessageLookupByLibrary.simpleMessage("Evolutions"),
         "generation": MessageLookupByLibrary.simpleMessage("Generation"),
         "generations": MessageLookupByLibrary.simpleMessage("Generations"),
+        "height": MessageLookupByLibrary.simpleMessage("Height"),
         "held_items": MessageLookupByLibrary.simpleMessage("Held Items"),
         "id_name": MessageLookupByLibrary.simpleMessage("id/name"),
         "is_main_series":
@@ -61,6 +66,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "moves_mos": MessageLookupByLibrary.simpleMessage("Moves (MOs)"),
         "name": MessageLookupByLibrary.simpleMessage("Name"),
         "no": MessageLookupByLibrary.simpleMessage("No"),
+        "noBerriesFound":
+            MessageLookupByLibrary.simpleMessage("No Berries found"),
+        "noPokemonsFound":
+            MessageLookupByLibrary.simpleMessage("No Pokémon found"),
         "pokedexes": MessageLookupByLibrary.simpleMessage("Pokedexes"),
         "pokemons": MessageLookupByLibrary.simpleMessage("Pokémons"),
         "pokesAmount": MessageLookupByLibrary.simpleMessage("Pokémon amount"),
@@ -72,10 +81,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "selectALanguage":
             MessageLookupByLibrary.simpleMessage("Select a language"),
         "settings": MessageLookupByLibrary.simpleMessage("Settings"),
+        "species": MessageLookupByLibrary.simpleMessage("Species"),
+        "stats": MessageLookupByLibrary.simpleMessage("Stats"),
         "target": MessageLookupByLibrary.simpleMessage("Target"),
         "theme": MessageLookupByLibrary.simpleMessage("Theme"),
         "type": MessageLookupByLibrary.simpleMessage("Type"),
         "versions": MessageLookupByLibrary.simpleMessage("Versions"),
+        "weight": MessageLookupByLibrary.simpleMessage("Weight"),
         "yes": MessageLookupByLibrary.simpleMessage("Yes")
       };
 }

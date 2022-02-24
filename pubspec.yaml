@@ -28,7 +28,8 @@ dependencies:
   flutter_bloc: ^7.3.3
   flutter_localizations:
     sdk: flutter
-  flutter_svg: ^0.23.0+1
+  flutter_svg: ^1.0.3
+  flutter_svg_provider: ^1.0.3
   get_it: ^7.2.0
   http: ^0.13.4
   intl: ^0.17.0
@@ -46,8 +47,7 @@ dev_dependencies:
 flutter_icons:
   android: true
   ios: true
-  image_path: "assets/images/pokedex_app_logo.jpg"
-
+  image_path: "assets/images/pokedex_app_logo_png.png"
 
 flutter_assets:
   assets_path: assets/
