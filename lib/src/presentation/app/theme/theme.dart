@@ -15,12 +15,11 @@ final lightTheme = ThemeData(
   canvasColor: PokeColor().white,
   textTheme: TextTheme(
     headline6: TextStyle(color: PokeColor().softBlue),
-    bodyText2: TextStyle(color: PokeColor().softBlue),
     bodyText1: TextStyle(color: PokeColor().softBlue),
   ),
   scaffoldBackgroundColor: PokeColor().softOrange,
-  colorScheme: ColorScheme.fromSwatch().copyWith(
-      primary: PokeColor().shadowBlue, secondary: PokeColor().shadowBlue),
+  colorScheme: ColorScheme.fromSwatch()
+      .copyWith(primary: PokeColor().shadowBlue, secondary: PokeColor().shadowBlue),
 );
 
 final darkTheme = ThemeData(

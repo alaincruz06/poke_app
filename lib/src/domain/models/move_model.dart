@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_if_null_operators
+
 class MoveModel {
   MoveModel({
     required this.id,
@@ -52,8 +54,8 @@ class MoveModel {
   MoveModel copyWith({
     int? id,
     String? name,
-    dynamic? accuracy,
-    dynamic? effectChance,
+    dynamic accuracy,
+    dynamic effectChance,
     int? pp,
     int? priority,
     int? power,
@@ -106,32 +108,23 @@ class MoveModel {
       id: json["id"] == null ? null : json["id"],
       name: json["name"] == null ? null : json["name"],
       accuracy: json["accuracy"] == null ? null : json["accuracy"],
-      effectChance: json["effect_chance"],
+      effectChance: json["effect_chance"] == null ? null : json["effect_chance"],
       pp: json["pp"] == null ? null : json["pp"],
       priority: json["priority"] == null ? null : json["priority"],
       power: json["power"] == null ? null : json["power"],
-      contestCombos: json["contest_combos"] == null
-          ? null
-          : ContestCombos.fromJson(json["contest_combos"]),
-      contestType: json["contest_type"] == null
-          ? null
-          : ContestType.fromJson(json["contest_type"]),
-      contestEffect: json["contest_effect"] == null
-          ? null
-          : ContestEffect.fromJson(json["contest_effect"]),
-      damageClass: json["damage_class"] == null
-          ? null
-          : ContestType.fromJson(json["damage_class"]),
+      contestCombos:
+          json["contest_combos"] == null ? null : ContestCombos.fromJson(json["contest_combos"]),
+      contestType: json["contest_type"] == null ? null : ContestType.fromJson(json["contest_type"]),
+      contestEffect:
+          json["contest_effect"] == null ? null : ContestEffect.fromJson(json["contest_effect"]),
+      damageClass: json["damage_class"] == null ? null : ContestType.fromJson(json["damage_class"]),
       effectEntries: json["effect_entries"] == null
           ? null
-          : List<EffectEntry>.from(
-              json["effect_entries"].map((x) => EffectEntry.fromJson(x))),
+          : List<EffectEntry>.from(json["effect_entries"].map((x) => EffectEntry.fromJson(x))),
       effectChanges: json["effect_changes"] == null
           ? null
           : List<dynamic>.from(json["effect_changes"].map((x) => x)),
-      generation: json["generation"] == null
-          ? null
-          : ContestType.fromJson(json["generation"]),
+      generation: json["generation"] == null ? null : ContestType.fromJson(json["generation"]),
       meta: json["meta"] == null ? null : Meta.fromJson(json["meta"]),
       names: json["names"] == null
           ? null
@@ -145,17 +138,15 @@ class MoveModel {
       superContestEffect: json["super_contest_effect"] == null
           ? null
           : ContestEffect.fromJson(json["super_contest_effect"]),
-      target:
-          json["target"] == null ? null : ContestType.fromJson(json["target"]),
+      target: json["target"] == null ? null : ContestType.fromJson(json["target"]),
       type: json["type"] == null ? null : ContestType.fromJson(json["type"]),
       learnedByPokemon: json["learned_by_pokemon"] == null
           ? null
-          : List<ContestType>.from(
-              json["learned_by_pokemon"].map((x) => ContestType.fromJson(x))),
+          : List<ContestType>.from(json["learned_by_pokemon"].map((x) => ContestType.fromJson(x))),
       flavorTextEntries: json["flavor_text_entries"] == null
           ? null
-          : List<FlavorTextEntry>.from(json["flavor_text_entries"]
-              .map((x) => FlavorTextEntry.fromJson(x))),
+          : List<FlavorTextEntry>.from(
+              json["flavor_text_entries"].map((x) => FlavorTextEntry.fromJson(x))),
     );
   }
 }
@@ -182,8 +173,7 @@ class ContestCombos {
   factory ContestCombos.fromJson(Map<String, dynamic> json) {
     return ContestCombos(
       normal: json["normal"] == null ? null : Normal.fromJson(json["normal"]),
-      contestCombosSuper:
-          json["super"] == null ? null : Normal.fromJson(json["super"]),
+      contestCombosSuper: json["super"] == null ? null : Normal.fromJson(json["super"]),
     );
   }
 }
@@ -211,8 +201,7 @@ class Normal {
     return Normal(
       useBefore: json["use_before"] == null
           ? null
-          : List<ContestType>.from(
-              json["use_before"].map((x) => ContestType.fromJson(x))),
+          : List<ContestType>.from(json["use_before"].map((x) => ContestType.fromJson(x))),
       useAfter: json["use_after"],
     );
   }
@@ -294,9 +283,7 @@ class EffectEntry {
     return EffectEntry(
       effect: json["effect"] == null ? null : json["effect"],
       shortEffect: json["short_effect"] == null ? null : json["short_effect"],
-      language: json["language"] == null
-          ? null
-          : ContestType.fromJson(json["language"]),
+      language: json["language"] == null ? null : ContestType.fromJson(json["language"]),
     );
   }
 }
@@ -327,12 +314,9 @@ class FlavorTextEntry {
   factory FlavorTextEntry.fromJson(Map<String, dynamic> json) {
     return FlavorTextEntry(
       flavorText: json["flavor_text"] == null ? null : json["flavor_text"],
-      language: json["language"] == null
-          ? null
-          : ContestType.fromJson(json["language"]),
-      versionGroup: json["version_group"] == null
-          ? null
-          : ContestType.fromJson(json["version_group"]),
+      language: json["language"] == null ? null : ContestType.fromJson(json["language"]),
+      versionGroup:
+          json["version_group"] == null ? null : ContestType.fromJson(json["version_group"]),
     );
   }
 }
@@ -398,12 +382,8 @@ class Meta {
 
   factory Meta.fromJson(Map<String, dynamic> json) {
     return Meta(
-      ailment: json["ailment"] == null
-          ? null
-          : ContestType.fromJson(json["ailment"]),
-      category: json["category"] == null
-          ? null
-          : ContestType.fromJson(json["category"]),
+      ailment: json["ailment"] == null ? null : ContestType.fromJson(json["ailment"]),
+      category: json["category"] == null ? null : ContestType.fromJson(json["category"]),
       minHits: json["min_hits"],
       maxHits: json["max_hits"],
       minTurns: json["min_turns"],
@@ -411,10 +391,8 @@ class Meta {
       drain: json["drain"] == null ? null : json["drain"],
       healing: json["healing"] == null ? null : json["healing"],
       critRate: json["crit_rate"] == null ? null : json["crit_rate"],
-      ailmentChance:
-          json["ailment_chance"] == null ? null : json["ailment_chance"],
-      flinchChance:
-          json["flinch_chance"] == null ? null : json["flinch_chance"],
+      ailmentChance: json["ailment_chance"] == null ? null : json["ailment_chance"],
+      flinchChance: json["flinch_chance"] == null ? null : json["flinch_chance"],
       statChance: json["stat_chance"] == null ? null : json["stat_chance"],
     );
   }
@@ -442,9 +420,7 @@ class Name {
   factory Name.fromJson(Map<String, dynamic> json) {
     return Name(
       name: json["name"] == null ? null : json["name"],
-      language: json["language"] == null
-          ? null
-          : ContestType.fromJson(json["language"]),
+      language: json["language"] == null ? null : ContestType.fromJson(json["language"]),
     );
   }
 }

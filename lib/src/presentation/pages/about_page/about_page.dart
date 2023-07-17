@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:http/http.dart' as http;
 import 'package:poke_app/src/presentation/app/constants/assets.dart';
-import 'package:poke_app/src/presentation/app/lang/l10n.dart';
+import 'package:poke_app/src/presentation/app/lang/locale.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class AboutPage extends StatelessWidget {
@@ -12,14 +12,12 @@ class AboutPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(S.of(context).about,
-            style: Theme.of(context).textTheme.headline6),
+        title: Text(S.of(context).about, style: Theme.of(context).textTheme.headline6),
       ),
       body: SingleChildScrollView(
         child: FutureBuilder(
           future: getInfo(),
-          builder:
-              (BuildContext context, AsyncSnapshot<List<String>> snapshot) {
+          builder: (BuildContext context, AsyncSnapshot<List<String>> snapshot) {
             return SingleChildScrollView(
               physics: const BouncingScrollPhysics(),
               child: Column(
@@ -31,14 +29,14 @@ class AboutPage extends StatelessWidget {
                       children: [
                         Column(
                           children: [
-                         const   Padding(
-                              padding: EdgeInsets.all(8.0),
-                              child:
-                                   CircleAvatar(
-                    foregroundImage: AssetImage(Assets.assetsImagesPokedexAppLogo, ),
-                    radius: 35,
-                  )
-                            ),
+                            const Padding(
+                                padding: EdgeInsets.all(8.0),
+                                child: CircleAvatar(
+                                  foregroundImage: AssetImage(
+                                    Assets.assetsImagesPokedexAppLogoPng,
+                                  ),
+                                  radius: 35,
+                                )),
                             Text(
                               "${snapshot.data?.elementAt(0)}",
                               style: Theme.of(context).textTheme.headline4,
@@ -80,7 +78,6 @@ class AboutPage extends StatelessWidget {
                                     path: 'worksatomics@gmail.com',
                                     query:
                                         'subject=Acerca de ${snapshot.data?.elementAt(0)} ${snapshot.data?.elementAt(2)}',
-                                   
                                   );
                                   await launch(params.toString());
                                 },
@@ -122,8 +119,7 @@ class AboutPage extends StatelessWidget {
                               //Apklis
                               InkWell(
                                 onTap: () {
-                                  launch(
-                                      "https://www.apklis.cu/developer/alaincruz06");
+                                  launch("https://www.apklis.cu/developer/alaincruz06");
                                 },
                                 child: Container(
                                   height: 40,
@@ -159,7 +155,6 @@ class AboutPage extends StatelessWidget {
                                     path: 'xokechka@gmail.com',
                                     query:
                                         'subject=Acerca de ${snapshot.data?.elementAt(0)} ${snapshot.data?.elementAt(2)}',
-                                   
                                   );
                                   await launch(params.toString());
                                 },

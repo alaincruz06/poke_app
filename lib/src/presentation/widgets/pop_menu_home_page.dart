@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:poke_app/src/presentation/app/lang/l10n.dart';
+import 'package:poke_app/src/presentation/app/lang/locale.dart';
 import 'package:poke_app/src/presentation/pages/about_page/about_page.dart';
 import 'package:poke_app/src/presentation/pages/help_page/help_page.dart';
 import 'package:poke_app/src/presentation/pages/settings_page/settings_page.dart';
@@ -35,13 +35,13 @@ class PopMenuHomePage extends StatelessWidget {
             child: Row(
               children: [
                 Icon(
-                  Icons.person_pin_rounded,
+                  Icons.help,
                   color: Theme.of(context).iconTheme.color,
                 ),
                 const SizedBox(
                   width: 10.0,
                 ),
-                Text(S.of(context).about),
+                Text(S.of(context).help),
               ],
             ),
           ),

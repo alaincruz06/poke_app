@@ -57,6 +57,18 @@ class Assets {
   /// assets/icons/visual_game_boy_100px.png
   static const String assetsIconsVisualGameBoy100px = "assets/icons/visual_game_boy_100px.png";
 
+  /// Assets for assetsImagesGif3Dots
+  /// assets/images/gif_3_dots.gif
+  static const String assetsImagesGif3Dots = "assets/images/gif_3_dots.gif";
+
+  /// Assets for assetsImagesLogoForeground
+  /// assets/images/logo_foreground.png
+  static const String assetsImagesLogoForeground = "assets/images/logo_foreground.png";
+
+  /// Assets for assetsImagesPikachuPng
+  /// assets/images/pikachu_png.png
+  static const String assetsImagesPikachuPng = "assets/images/pikachu_png.png";
+
   /// Assets for assetsImagesPikachuSvg
   /// assets/images/pikachu_svg.svg
   static const String assetsImagesPikachuSvg = "assets/images/pikachu_svg.svg";
@@ -65,13 +77,13 @@ class Assets {
   /// assets/images/pokeapi_256.png
   static const String assetsImagesPokeapi256 = "assets/images/pokeapi_256.png";
 
+  /// Assets for assetsImagesPokeballPng
+  /// assets/images/pokeball_png.png
+  static const String assetsImagesPokeballPng = "assets/images/pokeball_png.png";
+
   /// Assets for assetsImagesPokeballSvg
   /// assets/images/pokeball_Svg.svg
   static const String assetsImagesPokeballSvg = "assets/images/pokeball_Svg.svg";
-
-  /// Assets for assetsImagesPokedexAppLogo
-  /// assets/images/pokedex_app_logo.jpg
-  static const String assetsImagesPokedexAppLogo = "assets/images/pokedex_app_logo.jpg";
 
   /// Assets for assetsImagesPokedexAppLogoPng
   /// assets/images/pokedex_app_logo_png.png
@@ -86,8 +98,16 @@ class Assets {
   static const String assetsImagesPokemonSvgLogo = "assets/images/pokemon_svg_logo.svg";
 
   /// Assets for assetsImagesPokesearch
-  /// assets/images/pokesearch.jpg
-  static const String assetsImagesPokesearch = "assets/images/pokesearch.jpg";
+  /// assets/images/pokesearch.png
+  static const String assetsImagesPokesearch = "assets/images/pokesearch.png";
+
+  /// Assets for assetsImagesSadPikachu
+  /// assets/images/sad_pikachu.png
+  static const String assetsImagesSadPikachu = "assets/images/sad_pikachu.png";
+
+  /// Assets for assetsImagesWhitePokeballParaFondo
+  /// assets/images/white_pokeball_para_fondo.png
+  static const String assetsImagesWhitePokeballParaFondo = "assets/images/white_pokeball_para_fondo.png";
 
   /// Assets for assetsLangIntlEn
   /// assets/lang/intl_en.arb

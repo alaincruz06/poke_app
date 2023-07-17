@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_if_null_operators
+
 class AbilityModel {
   AbilityModel({
     required this.id,
@@ -49,26 +51,22 @@ class AbilityModel {
     return AbilityModel(
       id: json["id"] == null ? null : json["id"],
       name: json["name"] == null ? null : json["name"],
-      isMainSeries:
-          json["is_main_series"] == null ? null : json["is_main_series"],
-      generation: json["generation"] == null
-          ? null
-          : Generation.fromJson(json["generation"]),
+      isMainSeries: json["is_main_series"] == null ? null : json["is_main_series"],
+      generation: json["generation"] == null ? null : Generation.fromJson(json["generation"]),
       names: json["names"] == null
           ? null
           : List<Name>.from(json["names"].map((x) => Name.fromJson(x))),
       effectEntries: json["effect_entries"] == null
           ? null
-          : List<AbilityModelEffectEntry>.from(json["effect_entries"]
-              .map((x) => AbilityModelEffectEntry.fromJson(x))),
+          : List<AbilityModelEffectEntry>.from(
+              json["effect_entries"].map((x) => AbilityModelEffectEntry.fromJson(x))),
       effectChanges: json["effect_changes"] == null
           ? null
-          : List<EffectChange>.from(
-              json["effect_changes"].map((x) => EffectChange.fromJson(x))),
+          : List<EffectChange>.from(json["effect_changes"].map((x) => EffectChange.fromJson(x))),
       flavorTextEntries: json["flavor_text_entries"] == null
           ? null
-          : List<FlavorTextEntry>.from(json["flavor_text_entries"]
-              .map((x) => FlavorTextEntry.fromJson(x))),
+          : List<FlavorTextEntry>.from(
+              json["flavor_text_entries"].map((x) => FlavorTextEntry.fromJson(x))),
       pokemon: json["pokemon"] == null
           ? null
           : List<Pokemon>.from(json["pokemon"].map((x) => Pokemon.fromJson(x))),
@@ -97,13 +95,12 @@ class EffectChange {
 
   factory EffectChange.fromJson(Map<String, dynamic> json) {
     return EffectChange(
-      versionGroup: json["version_group"] == null
-          ? null
-          : Generation.fromJson(json["version_group"]),
+      versionGroup:
+          json["version_group"] == null ? null : Generation.fromJson(json["version_group"]),
       effectEntries: json["effect_entries"] == null
           ? null
-          : List<EffectChangeEffectEntry>.from(json["effect_entries"]
-              .map((x) => EffectChangeEffectEntry.fromJson(x))),
+          : List<EffectChangeEffectEntry>.from(
+              json["effect_entries"].map((x) => EffectChangeEffectEntry.fromJson(x))),
     );
   }
 }
@@ -130,9 +127,7 @@ class EffectChangeEffectEntry {
   factory EffectChangeEffectEntry.fromJson(Map<String, dynamic> json) {
     return EffectChangeEffectEntry(
       effect: json["effect"] == null ? null : json["effect"],
-      language: json["language"] == null
-          ? null
-          : Generation.fromJson(json["language"]),
+      language: json["language"] == null ? null : Generation.fromJson(json["language"]),
     );
   }
 }
@@ -191,9 +186,7 @@ class AbilityModelEffectEntry {
     return AbilityModelEffectEntry(
       effect: json["effect"] == null ? null : json["effect"],
       shortEffect: json["short_effect"] == null ? null : json["short_effect"],
-      language: json["language"] == null
-          ? null
-          : Generation.fromJson(json["language"]),
+      language: json["language"] == null ? null : Generation.fromJson(json["language"]),
     );
   }
 }
@@ -224,12 +217,9 @@ class FlavorTextEntry {
   factory FlavorTextEntry.fromJson(Map<String, dynamic> json) {
     return FlavorTextEntry(
       flavorText: json["flavor_text"] == null ? null : json["flavor_text"],
-      language: json["language"] == null
-          ? null
-          : Generation.fromJson(json["language"]),
-      versionGroup: json["version_group"] == null
-          ? null
-          : Generation.fromJson(json["version_group"]),
+      language: json["language"] == null ? null : Generation.fromJson(json["language"]),
+      versionGroup:
+          json["version_group"] == null ? null : Generation.fromJson(json["version_group"]),
     );
   }
 }
@@ -256,9 +246,7 @@ class Name {
   factory Name.fromJson(Map<String, dynamic> json) {
     return Name(
       name: json["name"] == null ? null : json["name"],
-      language: json["language"] == null
-          ? null
-          : Generation.fromJson(json["language"]),
+      language: json["language"] == null ? null : Generation.fromJson(json["language"]),
     );
   }
 }
@@ -290,8 +278,7 @@ class Pokemon {
     return Pokemon(
       isHidden: json["is_hidden"] == null ? null : json["is_hidden"],
       slot: json["slot"] == null ? null : json["slot"],
-      pokemon:
-          json["pokemon"] == null ? null : Generation.fromJson(json["pokemon"]),
+      pokemon: json["pokemon"] == null ? null : Generation.fromJson(json["pokemon"]),
     );
   }
 }

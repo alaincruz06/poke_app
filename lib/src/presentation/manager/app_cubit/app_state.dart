@@ -17,7 +17,7 @@ class AppState {
   @override
   List<Object?> get props => [locale];
 
-  AppState copyWith({Locale? locale}) {
+  AppState copyWith({Locale? locale, bool? welcomeScreenWasShow}) {
     return AppState(
       locale: locale ?? this.locale,
     );

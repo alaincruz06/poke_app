@@ -26,6 +26,8 @@
 .dart_tool/
 .flutter-plugins
 .flutter-plugins-dependencies
+.fvm/flutter_sdk
+.fvm/
 .packages
 .pub-cache/
 .pub/
@@ -44,3 +46,5 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+.vscode/settings.json
+.vscode/settings.json

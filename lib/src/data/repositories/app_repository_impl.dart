@@ -8,13 +8,13 @@ class AppRepositoryImpl implements AppRepository {
 
   final SharedPreferences _sharedPreferences;
 
-  final keyLocale = 'app_preferences_locale';
+  static const _keyLocale = 'app_preferences_locale';
   final keyWelcomeScreen = 'app_preferences_welcome_screen';
 
   @override
   Language get getCurrentLanguage {
     // String? srtLanguage = await _cacheStorage.read<String>(keyLocale);
-    final String? srtLanguage = _sharedPreferences.getString(keyLocale);
+    final String? srtLanguage = _sharedPreferences.getString(_keyLocale);
 
     if (srtLanguage != null) {
       return Language.values.firstWhere(
@@ -28,6 +28,6 @@ class AppRepositoryImpl implements AppRepository {
   @override
   Future<void> savedLanguage(Language language) async {
     // await _cacheStorage.write<String>(keyLocale, describeEnum(language));
-    await _sharedPreferences.setString(keyLocale, describeEnum(language));
+    await _sharedPreferences.setString(_keyLocale, describeEnum(language));
   }
 }

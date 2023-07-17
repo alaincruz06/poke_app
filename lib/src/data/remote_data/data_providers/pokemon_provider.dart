@@ -1,29 +1,48 @@
-import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
-import 'package:http/http.dart';
 import 'package:poke_app/src/domain/models/ability_model.dart';
-import 'package:poke_app/src/domain/models/item_model.dart';
-import 'package:poke_app/src/domain/models/move_model.dart';
+import 'package:poke_app/src/domain/models/encounter_model.dart';
 
 import 'dart:convert';
 import 'dart:async';
 
 import 'package:poke_app/src/domain/models/pokemon_model.dart';
 import 'package:poke_app/src/domain/models/results_model.dart';
+import 'package:poke_app/src/domain/models/type_model.dart';
 
 class PokemonProvider {
+  ResultsModel _pokemons = ResultsModel(count: 0, results: [], next: '', previous: '');
+
+  final _pokemonsStream = StreamController<ResultsModel>.broadcast();
+
+  Function(ResultsModel) get pokemonsSink => _pokemonsStream.sink.add;
+
+  Stream<ResultsModel> get pokemonsStream => _pokemonsStream.stream;
+
+  void dispose() {
+    _pokemonsStream.close();
+  }
+
   final String _url = 'pokeapi.co';
 
+  int offset = 0;
+  final int limit = 20;
+
   Future<ResultsModel> getPokemons() async {
-    final url = Uri.https(_url, '/api/v2/pokemon/');
+    final url = Uri.https(
+        _url, '/api/v2/pokemon', {'offset': offset.toString(), 'limit': limit.toString()});
     final resp = await http.get(url);
     final decodedData = json.decode(resp.body);
     final pokemons = ResultsModel.fromJson(decodedData as Map<String, dynamic>);
 
+    _pokemons.results!.addAll(pokemons.results!);
+    pokemonsSink(_pokemons);
+
+    offset += 20;
+
     return pokemons;
   }
 
-  Future<PokemonModel> getPokemonByIdOrName(String name) async {
+  Future<dynamic> getPokemonByIdOrName(String name) async {
     final url = Uri.https(_url, '/api/v2/pokemon/$name/');
     final resp = await http.get(
         url /* , headers: {
@@ -31,11 +50,13 @@ class PokemonProvider {
     'Charset': 'utf-8'} */
         );
 
-    final decodedData =
-        resp.body != "Not Found" ? json.decode(resp.body) : null;
-    final pokemonModel = PokemonModel.fromJson(decodedData);
-
-    return pokemonModel;
+    final decodedData = resp.body != "Not Found" ? json.decode(resp.body) : null;
+    if (decodedData != null) {
+      final pokemonModel = PokemonModel.fromJson(decodedData);
+      return pokemonModel;
+    } else {
+      return null;
+    }
   }
 
   Future<AbilityModel> getAbilityByIdOrName(String name) async {
@@ -47,89 +68,21 @@ class PokemonProvider {
     return abilityModel;
   }
 
-  Future<ItemModel> getItemHeldByIdOrName(String name) async {
-    final url = Uri.https(_url, '/api/v2/item/$name/');
+  Future<TypeModel> getTypeByIdOrName(String name) async {
+    final url = Uri.https(_url, '/api/v2/type/$name/');
     final resp = await http.get(url);
     final decodedData = json.decode(resp.body);
-    final itemModel = ItemModel.fromJson(decodedData);
+    final typeModel = TypeModel.fromJson(decodedData);
 
-    return itemModel;
+    return typeModel;
   }
 
-  Future<MoveModel> getMovesByIdOrName(String name) async {
-    final url = Uri.https(_url, '/api/v2/move/$name/');
+  Future<EncounterModel> getEncountersByIdOrName(String name) async {
+    final url = Uri.https(_url, '/api/v2/pokemon/$name/encounters');
     final resp = await http.get(url);
     final decodedData = json.decode(resp.body);
-    final moveModel = MoveModel.fromJson(decodedData);
+    final encounterModel = EncounterModel.fromJson(decodedData);
 
-    return moveModel;
+    return encounterModel;
   }
-
-  /*Future<List<Pelicula>> _procesarRespuesta(Uri url) async {
-    
-    final resp = await http.get( url );
-    final decodedData = json.decode(resp.body);
-
-    final peliculas = new Peliculas.fromJsonList(decodedData['results']);
-
-
-    return peliculas.items;
-  }
-
-
-
-
-
-  Future<List<Pelicula>> getPopulares() async {
-    
-    if ( _cargando ) return [];
-
-    _cargando = true;
-    _popularesPage++;
-
-    final url = Uri.https(_url, '3/movie/popular', {
-      'api_key'  : _apikey,
-      'language' : _language,
-      'page'     : _popularesPage.toString()
-    });
-
-    final resp = await _procesarRespuesta(url);
-
-    _populares.addAll(resp);
-    popularesSink( _populares );
-
-    _cargando = false;
-    return resp;
-
-  }
-
-  Future<List<Actor>> getCast( String peliId ) async {
-
-    final url = Uri.https(_url, '3/movie/$peliId/credits', {
-      'api_key'  : _apikey,
-      'language' : _language
-    });
-
-    final resp = await http.get(url);
-    final decodedData = json.decode( resp.body );
-
-    final cast = new Cast.fromJsonList(decodedData['cast']);
-
-    return cast.actores;
-
-  }
-
-
-  Future<List<Pelicula>> buscarPelicula( String query ) async {
-
-    final url = Uri.https(_url, '3/search/movie', {
-      'api_key'  : _apikey,
-      'language' : _language,
-      'query'    : query
-    });
-
-    return await _procesarRespuesta(url);
-
-  } */
-
 }
